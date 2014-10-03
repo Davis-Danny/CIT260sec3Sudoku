@@ -25,6 +25,7 @@ public class Sudoku {
         bestTimes myTimes = new bestTimes();
         myTimes.showTimes();
         NewGame mylevels = new NewGame();
+        mylevels.level();
     }
 
     public void getName() {
