@@ -7,7 +7,7 @@ package sudoku;
 
 /**
  *
- * @author Danny
+ * @author Danny Davis
  */
 public class Sudoku {
 
