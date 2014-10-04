@@ -40,6 +40,11 @@ public class Sudoku {
         System.out.println(instructions);
     }
   public void getHints() {
+      /**
+ *
+ * @author TJ Webster
+ */
+      
       hints_easy myHints1 = new hints_easy();
       hints_hard myHints2 = new hints_hard();
       Scanner input = new Scanner(System.in);

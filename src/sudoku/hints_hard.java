@@ -7,7 +7,7 @@ package sudoku;
 
 /**
  *
- * @author Travis
+ * @author TJ Webster
  */
 public class hints_hard {
     String hint_one = "Start at number 1. Use the same logic from an easy puzzle to fill in every empty box with all of the possible numbers for that box. If possible, put in definites.";
