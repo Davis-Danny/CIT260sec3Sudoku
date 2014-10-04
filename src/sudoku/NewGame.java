@@ -17,7 +17,8 @@ public class NewGame {
     String medium = "This is the Medium Board Level!";
     String hard = "This is the Hard Board Level!";
     
-      
+     //Heidi I edited this to work better with the classes I created. But I was unable to grab the data from here to remember the difficulty the 
+    //player chose to select what type of hint they would get.
     public void level() {
         String answer;
         Scanner input = new Scanner(System.in);
