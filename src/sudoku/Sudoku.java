@@ -26,6 +26,8 @@ public class Sudoku {
         myTimes.showTimes();
         NewGame mylevels = new NewGame();
         mylevels.level();
+        
+        myGame.getHints();
     }
 
     public void getName() {
@@ -37,5 +39,35 @@ public class Sudoku {
     public void getHelp(){
         System.out.println(instructions);
     }
-
+  public void getHints() {
+      hints_easy myHints1 = new hints_easy();
+      hints_hard myHints2 = new hints_hard();
+      Scanner input = new Scanner(System.in);
+      
+      System.out.println("Would you like a hint?");
+      String answer = input.next();
+      if("yes".equals(answer)) {
+          System.out.println("What difficulty are you on?");
+          String difficulty = input.next();
+          if("easy".equals(difficulty) || "medium".equals(difficulty))
+            myHints1.showHints();
+          else if("hard".equals(difficulty))
+              myHints2.showHints();
+          else 
+              System.out.println("That was not a choice in difficulty");
+}
+      else
+          System.out.println("Well ok then");
+          
+      
+          
+          
+          
+            
+      
+  
+          
+          
+      
+  }
 }
