@@ -45,7 +45,8 @@ public class Sudoku {
       Scanner input = new Scanner(System.in);
       
       System.out.println("Would you like a hint?");
-      String answer = input.next();
+      String answer="No Answer";
+       answer = input.next();
       if("yes".equals(answer)) {
           System.out.println("What difficulty are you on?");
           String difficulty = input.next();

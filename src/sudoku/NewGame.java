@@ -22,6 +22,7 @@ public class NewGame {
         String answer;
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your chosen difficulty level: (easy, medium, hard): ");
+        answer="No Answer";
         answer=input.next();
         if("easy".equals(answer)) 
         System.out.println(easy);
