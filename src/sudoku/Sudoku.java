@@ -28,6 +28,8 @@ public class Sudoku {
         mylevels.level();
         
         myGame.getHints();
+        Exit exit = new Exit();
+        exit.quit();
     }
 
     public void getName() {
