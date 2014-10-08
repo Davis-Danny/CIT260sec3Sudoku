@@ -33,7 +33,10 @@ public class NewGame {
         System.out.println(hard);
         else
             System.out.println("Pick a difficulty from above.");
-        
+        //added methods to use Board class -Danny
+        Board board = new Board();
+        board.setBoard(answer);
+        board.displayGrid();
                          }   
     
     }   
