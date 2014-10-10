@@ -29,7 +29,7 @@ public class Sudoku {
         
         myGame.getHints();
         Exit exit = new Exit();
-        exit.quit();
+        exit.quit();        
     }
 
     public void getName() {

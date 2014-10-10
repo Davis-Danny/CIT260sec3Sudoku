@@ -129,10 +129,52 @@ public class Board {
         grid[6][8] = 9;
         grid[7][8] = 2;        
         grid[8][8] = 6;
+        
+        solution[0][0] = 4;
+        solution[1][0] = 9;
+        solution[2][0] = 5;
+        solution[3][0] = 8;
+        solution[5][0] = 6;
+        solution[6][0] = 7;
+        solution[4][1] = 9;
+        solution[8][1] = 4;
+        solution[1][2] = 2;
+        solution[2][2] = 1;
+        solution[6][2] = 8;
+        solution[8][2] = 9;
+        solution[0][3] = 6;
+        solution[1][3] = 5;
+        solution[2][3] = 3;
+        solution[3][3] = 9;
+        solution[4][3] = 8;
+        solution[6][3] = 2;
+        solution[8][3] = 1;
+        solution[0][4] = 2;
+        solution[3][4] = 6;
+        solution[5][4] = 1;
+        solution[8][4] = 7;
+        solution[0][5] = 9;
+        solution[2][5] = 7;
+        solution[4][5] = 2;
+        solution[5][5] = 3;
+        solution[6][5] = 6;
+        solution[7][5] = 5;
+        solution[8][5] = 8;
+        solution[0][6] = 5;
+        solution[2][6] = 9;
+        solution[6][6] = 1;
+        solution[7][6] = 7;
+        solution[0][7] = 7;
+        solution[4][7] = 3;
+        solution[2][8] = 4;
+        solution[3][8] = 5;
+        solution[6][8] = 9;
+        solution[7][8] = 2;        
+        solution[8][8] = 6;
     }
 
     public void fillMedium() {
-
+        
     }
 
     public void fillHard() {

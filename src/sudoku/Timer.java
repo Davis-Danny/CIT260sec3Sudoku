@@ -15,6 +15,10 @@ public class Timer {
     int hours;
     
     public String addTime(int newSeconds){
+        String gameTime = "";
+        if(newSeconds<0){
+            return "ERROR: input a positive number.";
+        }
         seconds = seconds + newSeconds;
         while(seconds>=60){
             seconds -= 60;
@@ -24,6 +28,17 @@ public class Timer {
             minutes -= 60;
             hours++;
         }
-        return hours + ":" + minutes + ":" + seconds;
+        if(hours>0){
+            gameTime += hours + ":";
+        }
+        if(minutes<10){
+            gameTime += 0;
+        }
+        gameTime += minutes + ":";
+        if(seconds<10){
+            gameTime += 0;
+        }
+        gameTime += seconds;
+        return gameTime;
     }
 }
