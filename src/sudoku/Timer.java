@@ -12,13 +12,18 @@ package sudoku;
 public class Timer {
     int seconds;
     int minutes;
+    int hours;
     
     public String addTime(int newSeconds){
         seconds = seconds + newSeconds;
-        if(seconds>=60){
-            seconds = 0;
+        while(seconds>=60){
+            seconds -= 60;
             minutes++;
         }
-        return minutes + ":" + seconds;
+        while(minutes>=60){
+            minutes -= 60;
+            hours++;
+        }
+        return hours + ":" + minutes + ":" + seconds;
     }
 }
