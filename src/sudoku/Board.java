@@ -17,6 +17,7 @@ public class Board {
 
     public void setBoard(String difficulty) {
         grid = new int[9][9];
+        solution = new int[9][9];
         this.difficulty = difficulty;
         fill();
     }
