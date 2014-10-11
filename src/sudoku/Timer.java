@@ -10,7 +10,7 @@ package sudoku;
  * @author Danny
  */
 public class Timer {
-    int seconds;
+    short seconds;
     int minutes;
     int hours;
     
@@ -19,7 +19,7 @@ public class Timer {
         if(newSeconds<0){
             return "ERROR: input a positive number.";
         }
-        seconds = seconds + newSeconds;
+        seconds = (short) (seconds + (short)newSeconds);
         while(seconds>=60){
             seconds -= 60;
             minutes++;
@@ -39,6 +39,6 @@ public class Timer {
             gameTime += 0;
         }
         gameTime += seconds;
-        return gameTime;
+        return "Your current time is: \n \"" + gameTime + "\"";
     }
 }
