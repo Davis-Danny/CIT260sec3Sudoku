@@ -26,8 +26,9 @@ public class Sudoku {
         myTimes.showTimes();
         NewGame mylevels = new NewGame();
         mylevels.level();
-        
         myGame.getHints();
+        Timer myTimer = new Timer();        
+        System.out.println(myTimer.addTime(7));
         Exit exit = new Exit();
         exit.quit();        
     }
