@@ -43,3 +43,19 @@ public class Exit {
         }
     }
 }
+/**
+ * Tip Calculator
+ * @author Scott Hidlebaugh
+ */
+
+public class Tip ();
+        
+    public void getStart () {
+        Scanner input = new Scanner (System.in);
+        System.out.println ("Enter Starting Amount: ");
+        bill = input.next ();
+        
+        
+
+
+}
