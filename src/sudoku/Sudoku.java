@@ -24,6 +24,14 @@ public class Sudoku {
         myGame.getHelp();
         bestTimes myTimes = new bestTimes();
         myTimes.showTimes();
+        /*
+        bestTimes easyTimes = new bestTimes();
+        int times[] = new int[3];
+        times[0] = 1255;
+        times[1] = 3005;
+        times[2] = 2547;
+        System.out.println(easyTimes.getBestEasyTime(times));
+        */
         NewGame mylevels = new NewGame();
         mylevels.level();
         myGame.getHints();
