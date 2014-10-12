@@ -22,6 +22,8 @@ public class Sudoku {
         Sudoku myGame = new Sudoku();
         myGame.getName();
         myGame.getHelp();
+        
+        System.out.println(myGame.pastGames(8, 8));
         bestTimes myTimes = new bestTimes();
         myTimes.showTimes();
         /*
@@ -33,8 +35,10 @@ public class Sudoku {
         System.out.println(easyTimes.getBestEasyTime(times));
         */
         NewGame mylevels = new NewGame();
-        mylevels.level();
-        myGame.getHints();
+        mylevels.level();        
+        hints myHints = new hints();
+        System.out.println(myHints.inquireHint(mylevels.level()));
+      
         Timer myTimer = new Timer();        
         System.out.println(myTimer.addTime(7));
         Exit exit = new Exit();
@@ -50,41 +54,24 @@ public class Sudoku {
     public void getHelp(){
         System.out.println(instructions);
     }
-  public void getHints() {
-      /**
- *
- * @author TJ Webster
- */
-      
-      hints_easy myHints1 = new hints_easy();
-      hints_hard myHints2 = new hints_hard();
-      Scanner input = new Scanner(System.in);
-      
-      System.out.println("Would you like a hint?");
-      String answer="No Answer";
-       answer = input.next();
-      if("yes".equals(answer)) {
-          System.out.println("What difficulty are you on?");
-          String difficulty = input.next();
-          if("easy".equals(difficulty) || "medium".equals(difficulty))
-            myHints1.showHints();
-          else if("hard".equals(difficulty))
-              myHints2.showHints();
-          else 
-              System.out.println("That was not a choice in difficulty");
-}
-      else
-          System.out.println("Well ok then");
-          
-      
-          
-          
-          
-            
-      
+    
+    public String pastGames(int complete, int incomplete){
+        int totalGames = complete + incomplete;
+        int ratioGames = (complete / totalGames) * 100;
+        if (complete <= 0 && incomplete > 0)
+          return "You have " + incomplete + " incomplete games \n" + "You have completed " + ratioGames+ "%"+ " of your games";
+                    
+        else if (complete > 0 && incomplete > 0)
+            return "You have completed " + complete + " games \n" +
+             "You have " + incomplete + " incomplete games \n" + "You have completed " + ratioGames+ "%"+ " of your games";
+        else if (complete > 0)
+            return "You have completed " + complete + " games \n" + "You have completed " + ratioGames+ "%"+ " of your games";
+        else if(complete <= 0)
+            return "You have not completed any games \n" + "You have completed " + ratioGames+ "%"+ " of your games";
+        else
+            return "Error:Number is not positive";
+       
+        
+    }
   
-          
-          
-      
-  }
 }

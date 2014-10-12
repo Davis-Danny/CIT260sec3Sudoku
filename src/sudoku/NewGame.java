@@ -19,24 +19,33 @@ public class NewGame {
     
      //Heidi I edited this to work better with the classes I created. But I was unable to grab the data from here to remember the difficulty the 
     //player chose to select what type of hint they would get.
-    public void level() {
+    public String level() {
         String answer;
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your chosen difficulty level: (easy, medium, hard): ");
         answer="No Answer";
         answer=input.next();
-        if("easy".equals(answer)) 
-        System.out.println(easy);
-        else if("medium".equals(answer))
-        System.out.println(medium);
-        else if("hard".equals(answer))
-        System.out.println(hard);
-        else
-            System.out.println("Pick a difficulty from above.");
+        if(null != answer) 
+        switch (answer) {
+            case "easy":
+                System.out.println(easy);
+                break;
+            case "medium":
+                System.out.println(medium);
+                break;
+            case "hard":
+                System.out.println(hard);
+                break;
+            default:
+                System.out.println("Pick a difficulty from above.");
+                break;
+        }
         //added methods to use Board class -Danny
         Board board = new Board();
         board.setBoard(answer);
         board.displayGrid();
+        return null;
+       
                          }   
     
     }   
