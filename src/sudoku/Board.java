@@ -86,8 +86,8 @@ public class Board {
             return value;
         }
         else
-           return " ";
-    }
+            return " ";
+        }
 
     public void fillEasy() {
         grid[0][0] = 4;
@@ -128,9 +128,9 @@ public class Board {
         grid[2][8] = 4;
         grid[3][8] = 5;
         grid[6][8] = 9;
-        grid[7][8] = 2;        
+        grid[7][8] = 2;
         grid[8][8] = 6;
-        
+
         solution[0][0] = 4;
         solution[1][0] = 9;
         solution[2][0] = 5;
@@ -170,12 +170,12 @@ public class Board {
         solution[2][8] = 4;
         solution[3][8] = 5;
         solution[6][8] = 9;
-        solution[7][8] = 2;        
+        solution[7][8] = 2;
         solution[8][8] = 6;
     }
 
     public void fillMedium() {
-        
+
     }
 
     public void fillHard() {

@@ -48,7 +48,7 @@ public class Exit {
  * @author Scott Hidlebaugh
  */
 
-public class Tip ();
+/*public class Tip ();
         
     public void getStart () {
         Scanner input = new Scanner (System.in);
@@ -58,4 +58,4 @@ public class Tip ();
         
 
 
-}
+}*/

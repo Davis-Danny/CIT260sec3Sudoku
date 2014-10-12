@@ -43,7 +43,8 @@ public class NewGame {
         //added methods to use Board class -Danny
         Board board = new Board();
         board.setBoard(answer);
-        board.displayGrid();
+        Interface myInterface = new Interface();
+        myInterface.runGame(board);
         return null;
        
                          }   
