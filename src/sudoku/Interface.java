@@ -21,7 +21,6 @@ public class Interface {
     public void runGame(Board board) {
         board.displayGrid();
         Scanner input = new Scanner(System.in);
-        System.out.println(board.checkBoard());
         while (!board.checkBoard()) {
             invalid = true;
             while (invalid) {
@@ -50,7 +49,6 @@ public class Interface {
             }
             board.addNumber(value,x,y);
             board.displayGrid();
-            System.out.println(board.checkBoard());
         }
         System.out.println("Congratulations!");
 
