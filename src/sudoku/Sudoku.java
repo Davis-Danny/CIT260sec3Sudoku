@@ -21,7 +21,7 @@ public class Sudoku {
     public static void main(String[] args) {
         Sudoku myGame = new Sudoku();
         myGame.getName();
-        myGame.getHelp();
+        
         HelpMenuView myInput = new HelpMenuView();
         myInput.getInput();
         
@@ -53,9 +53,9 @@ public class Sudoku {
         playerName = input.next();
         
     }
-    public void getHelp(){
-        System.out.println(instructions);
-    }
+//    public void getHelp(){
+//        System.out.println(instructions);
+//    }
     
     public String pastGames(int complete, int incomplete){
         int totalGames = complete + incomplete;
