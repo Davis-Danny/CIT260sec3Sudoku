@@ -21,7 +21,9 @@ public class Sudoku {
     public static void main(String[] args) {
         Sudoku myGame = new Sudoku();
         myGame.getName();
-        myGame.getHelp();
+        
+        HelpMenuView myInput = new HelpMenuView();
+        myInput.getInput();
         
         System.out.println(myGame.pastGames(8, 8));
         bestTimes myTimes = new bestTimes();
@@ -36,8 +38,8 @@ public class Sudoku {
         */
         NewGame mylevels = new NewGame();
         mylevels.level();        
-        hints myHints = new hints();
-        System.out.println(myHints.inquireHint(mylevels.level()));
+//        hints myHints = new hints();
+//        System.out.println(myHints.inquireHint(mylevels.level()));
       
         Timer myTimer = new Timer();        
         System.out.println(myTimer.addTime(7));
@@ -51,9 +53,9 @@ public class Sudoku {
         playerName = input.next();
         
     }
-    public void getHelp(){
-        System.out.println(instructions);
-    }
+//    public void getHelp(){
+//        System.out.println(instructions);
+//    }
     
     public String pastGames(int complete, int incomplete){
         int totalGames = complete + incomplete;
