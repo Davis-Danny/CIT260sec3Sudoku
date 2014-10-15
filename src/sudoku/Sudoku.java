@@ -38,8 +38,8 @@ public class Sudoku {
         */
         NewGame mylevels = new NewGame();
         mylevels.level();        
-        hints myHints = new hints();
-        System.out.println(myHints.inquireHint(mylevels.level()));
+//        hints myHints = new hints();
+//        System.out.println(myHints.inquireHint(mylevels.level()));
       
         Timer myTimer = new Timer();        
         System.out.println(myTimer.addTime(7));
