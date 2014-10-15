@@ -22,6 +22,8 @@ public class Sudoku {
         Sudoku myGame = new Sudoku();
         myGame.getName();
         myGame.getHelp();
+        HelpMenuView myInput = new HelpMenuView();
+        myInput.getInput();
         
         System.out.println(myGame.pastGames(8, 8));
         bestTimes myTimes = new bestTimes();
