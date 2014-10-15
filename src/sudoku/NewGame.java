@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class NewGame {
 
+    String difficulty = "";
     String easy = "This is the Easy Board Level!";
     String medium = "This is the Medium Board Level!";
     String hard = "This is the Hard Board Level!";
@@ -20,27 +21,32 @@ public class NewGame {
     //Heidi I edited this to work better with the classes I created. But I was unable to grab the data from here to remember the difficulty the 
     //player chose to select what type of hint they would get.
     public String level() {
+        boolean repeat = true;
         String answer;
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your chosen difficulty level: (easy, medium, hard): ");
-        answer = "No Answer";
         answer = input.next();
-        if (null != answer) {
+        do {
             switch (answer) {
                 case "easy":
                     System.out.println(easy);
+                    repeat = false;
                     break;
                 case "medium":
                     System.out.println(medium);
+                    repeat = false;
                     break;
                 case "hard":
                     System.out.println(hard);
+                    repeat = false;
                     break;
                 default:
                     System.out.println("Pick a difficulty from above.");
                     break;
             }
-        }
+        } while (repeat);
+
+        difficulty = answer;
 
         //added methods to use Board class -Danny
         Board board = new Board();
@@ -49,6 +55,8 @@ public class NewGame {
         myInterface.runGame(board);
         return null;
     }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
 }
-
-
