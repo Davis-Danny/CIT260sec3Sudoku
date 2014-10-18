@@ -22,8 +22,8 @@ public class Sudoku {
         Sudoku myGame = new Sudoku();
         myGame.getName();
         
-        HelpMenuView myInput = new HelpMenuView();
-        myInput.getInput();
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.getInput();
         
         System.out.println(myGame.pastGames(8, 8));
         bestTimes myTimes = new bestTimes();
@@ -36,8 +36,7 @@ public class Sudoku {
         times[2] = 2547;
         System.out.println(easyTimes.getBestEasyTime(times));
         */
-        NewGameView mylevels = new NewGameView();
-        mylevels.getdifficulty();        
+                
 //        hints myHints = new hints();
 //        System.out.println(myHints.inquireHint(mylevels.level()));
       
