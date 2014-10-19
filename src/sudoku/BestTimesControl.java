@@ -9,14 +9,15 @@ package sudoku;
  *
  * @author Danny
  */
-public class bestTimes {
-    String time1;
-    String time2;
-    String time3;
-    String time4;
-    String time5;
-    
-    public void bestTimes(){
+public class BestTimesControl {
+
+    String time1 = "Not yet taken!";
+    String time2 = "Not yet taken!";
+    String time3 = "Not yet taken!";
+    String time4 = "Not yet taken!";
+    String time5 = "Not yet taken!";
+
+    public void BestTimesControl() {
         reset();
     }
 
@@ -34,21 +35,16 @@ public class bestTimes {
         System.out.println(time3);
         System.out.println(time4);
         System.out.println(time5);
+
     }
 
-    public String getBestEasyTime(int times[]) {
-        int minutes, seconds;
-        int bestTime = times[0];
-        String bestTimeMessage;
+    public void quit() {
+        ExitMenuView exit = new ExitMenuView();
+        exit.getIntake();
+    }
 
-        for (int i = 0; i < times.length - 1; i++) {
-            if (bestTime > times[i + 1]) {
-                bestTime = times[i + 1];
-            }
-        }
-        minutes = bestTime / 60;
-        seconds = bestTime % 60;
-        bestTimeMessage = "Your best time on easy is:\n" + "\"" + minutes + ":" + seconds + "\"";
-        return bestTimeMessage;
+    public void toMain() {
+        MainMenuView main = new MainMenuView();
+        main.getInput();
     }
 }

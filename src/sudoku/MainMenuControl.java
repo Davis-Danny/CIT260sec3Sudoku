@@ -17,7 +17,8 @@ public class MainMenuControl {
     }
     
     public void displayBestTimes() {
-        System.out.println("Displays Best Times Menu");
+        BestTimesView times = new BestTimesView();
+        times.getInput();
     }
     
     public void displayHelp() {
