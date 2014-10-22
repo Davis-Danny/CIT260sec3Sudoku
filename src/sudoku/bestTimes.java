@@ -21,11 +21,11 @@ public class bestTimes {
     }
 
     public void reset() {
-        time1 = "Not yet taken!";
-        time2 = "Not yet taken!";
-        time3 = "Not yet taken!";
-        time4 = "Not yet taken!";
-        time5 = "Not yet taken!";
+    time1 = "Not yet taken!";
+    time2 = "Not yet taken!";
+    time3 = "Not yet taken!";
+    time4 = "Not yet taken!";
+    time5 = "Not yet taken!";
     }
 
     public void showTimes() {

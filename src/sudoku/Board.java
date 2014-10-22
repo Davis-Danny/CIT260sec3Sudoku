@@ -24,13 +24,13 @@ public class Board {
 
     public void fill() {
         switch (difficulty) {
-            case "easy":
+            case "E":
                 fillEasy();
                 break;
-            case "medium":
+            case "M":
                 fillMedium();
                 break;
-            case "hard":
+            case "H":
                 fillHard();
                 break;
             default:
