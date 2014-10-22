@@ -43,7 +43,7 @@ public class Sudoku {
         Timer myTimer = new Timer();        
         System.out.println(myTimer.addTime(7));
         Exit exit = new Exit();
-        exit.quit();        
+        exit.quit();   
     }
 
     public void getName() {
