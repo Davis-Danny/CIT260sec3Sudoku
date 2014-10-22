@@ -58,23 +58,24 @@ public class Board {
     }
 
     public void displayGrid() {
-        System.out.println("+---+---+---+");
+        System.out.println("  012 345 678 ");
+        System.out.println(" +---+---+---+");
         printRow(0);
         printRow(1);
         printRow(2);
-        System.out.println("|---+---+---|");
+        System.out.println(" |---+---+---|");
         printRow(3);
         printRow(4);
         printRow(5);
-        System.out.println("|---+---+---|");
+        System.out.println(" |---+---+---|");
         printRow(6);
         printRow(7);
         printRow(8);
-        System.out.println("+---+---+---+");
+        System.out.println(" +---+---+---+");
     }
 
     public void printRow(int row) {
-        System.out.println("|" + displayCell(0, row) + displayCell(1, row)
+        System.out.println(""+ row + "|" + displayCell(0, row) + displayCell(1, row)
                 + displayCell(2, row) + "|" + displayCell(3, row) + displayCell(4, row)
                 + displayCell(5, row) + "|" + displayCell(6, row) + displayCell(7, row)
                 + displayCell(8, row) + "|");
