@@ -35,7 +35,7 @@ public class Interface {
             }
             System.out.println("Value:");
             value = Integer.parseInt(input.next());
-            if (value < 1 || value > 9) {
+            if (value < 0 || value > 9) {
                 System.out.println("ERROR: Invalid value");
                 continue;
             }
