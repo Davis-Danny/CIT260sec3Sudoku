@@ -7,55 +7,47 @@ import java.util.Scanner;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 /**
  *
  * @author Scott Hidlebaugh
  */
-
 public class ExitMenuView {
+
     private final static String[][] menuItems = {
         {"E", "Exit"},
-        {"C", "Cancel"},
-        
-        
-    };
-    
+        {"C", "Cancel"},};
+
     private ExitMenuControl ExitMenuControl = new ExitMenuControl();
-    
-    public void getIntake() {
-        
+
+    public boolean getIntake() {
+
         String command;
         Scanner input = new Scanner(System.in);
         boolean repeat = true;
         do {
-            
+
             this.display();
-            
+
             command = input.nextLine();
             command = command.trim().toUpperCase();
-             
+
             switch (command) {
                 case "E":
                     System.out.println(ExitMenuControl.exit);
                     repeat = false;
-                    break;
+                    return true;
                 case "C":
                     System.out.println(ExitMenuControl.cancel);
                     repeat = false;
-                    break;
-                    
-            }
-            
-         
-         }
-        while (repeat);
+                    return false;
 
-        
+            }
+
+        } while (repeat);
+        return false;
     }
-    
-        public final void display() {
+
+    public final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 

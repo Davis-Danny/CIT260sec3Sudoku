@@ -16,13 +16,25 @@ public class Interface {
     int x;
     int y;
     int value;
+    String command;
 
     public void runGame(Board board) {
         board.displayGrid();
         Scanner input = new Scanner(System.in);
         while (!board.checkBoard()) {
             System.out.println("Column:");
-            x = Integer.parseInt(input.next());
+            command = input.next();
+            if("Q".equals(command)){
+                ExitMenuView exit = new ExitMenuView();
+                if(exit.getIntake()){
+                    break;
+                }
+                else {
+                    board.displayGrid();
+                    continue;
+                }
+            }
+            x = Integer.parseInt(command);
             if (x < 0 || x > 8) {
                 System.out.println("ERROR: Invalid X value");
                 continue;
@@ -42,7 +54,7 @@ public class Interface {
             board.addNumber(value, x, y);
             board.displayGrid();
         }
-        System.out.println("Congratulations!");
+        if(board.checkBoard())System.out.println("Congratulations!");
 
     }
 }
