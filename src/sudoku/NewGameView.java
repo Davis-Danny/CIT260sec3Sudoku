@@ -66,8 +66,6 @@ public class NewGameView {
         myInterface.runGame(board);
         
         
-        while (!command.equals("Q"));
-        
         return;
     }
     
