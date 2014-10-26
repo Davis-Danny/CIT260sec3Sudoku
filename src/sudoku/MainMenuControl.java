@@ -27,7 +27,8 @@ public class MainMenuControl {
     }
     
     public void displayQuit() {
-        System.out.println("Displays Quit Menu");
+        ExitMenuView exit = new ExitMenuView();
+        exit.getIntake();
     }
     
 }
