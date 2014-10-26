@@ -57,4 +57,5 @@ public class Interface {
         if(board.checkBoard())System.out.println("Congratulations!");
 
     }
+    
 }
