@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Danny
+ * @author Danny and Scott
  */
 public class BestTimesView {
     
