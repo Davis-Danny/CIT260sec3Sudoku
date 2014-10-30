@@ -31,11 +31,21 @@ public class bestTimes {
         }
     }
 
-    public String getBestEasyTime(int times[]) {
+    /**
+    *
+    *   @author Jeff
+    */
+    public String getBestMediumTime(int times[]) {
         int minutes, seconds;
         int bestTime = times[0];
         String bestTimeMessage;
 
+        for (int i = 0; i < times.length - 1; i++) {
+            if (times[i] < 0) {
+                System.out.println("Invalid Time Entered");
+            }
+        }
+        
         for (int i = 0; i < times.length - 1; i++) {
             if (bestTime > times[i + 1]) {
                 bestTime = times[i + 1];
@@ -43,7 +53,7 @@ public class bestTimes {
         }
         minutes = bestTime / 60;
         seconds = bestTime % 60;
-        bestTimeMessage = "Your best time on easy is:\n" + "\"" + minutes + ":" + seconds + "\"";
+        bestTimeMessage = "Your best time on medium is:\n" + "\"" + minutes + ":" + seconds + "\"";
         return bestTimeMessage;
     }
 
