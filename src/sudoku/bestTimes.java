@@ -10,30 +10,25 @@ package sudoku;
  * @author Danny
  */
 public class bestTimes {
-    String time1;
-    String time2;
-    String time3;
-    String time4;
-    String time5;
-    
-    public void bestTimes(){
+
+    int[] bestTimes = new int[5];
+
+    public void bestTimes() {
         reset();
     }
 
     public void reset() {
-    time1 = "Not yet taken!";
-    time2 = "Not yet taken!";
-    time3 = "Not yet taken!";
-    time4 = "Not yet taken!";
-    time5 = "Not yet taken!";
+        bestTimes[0] = 180;
+        bestTimes[1] = 120;
+        bestTimes[2] = 90;
+        bestTimes[3] = 60;
+        bestTimes[4] = 30;
     }
 
-    public void showTimes() {
-        System.out.println(time1);
-        System.out.println(time2);
-        System.out.println(time3);
-        System.out.println(time4);
-        System.out.println(time5);
+    public void printBestTimes(){
+        for(int i = 0;i<5;i++){
+            System.out.println(bestTimes[i]/60 + ":" + bestTimes[i]%60);
+        }
     }
 
     public String getBestEasyTime(int times[]) {
@@ -50,5 +45,18 @@ public class bestTimes {
         seconds = bestTime % 60;
         bestTimeMessage = "Your best time on easy is:\n" + "\"" + minutes + ":" + seconds + "\"";
         return bestTimeMessage;
+    }
+
+    public void sortBestTimes() {
+        for (int j = 0; j <= 3; j++) {
+            for (int i = j+1; i <= 4; i++) {
+                if (bestTimes[j] > bestTimes[i]) {
+                    int temp = bestTimes[i];
+                    bestTimes[i] = bestTimes[j];
+                    bestTimes[j] = temp;
+                }
+               
+            }
+        }
     }
 }

@@ -12,9 +12,9 @@ package sudoku;
 public class Sudoku {
    public static void main(String[] args) {
         
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.getInput();
- 
+       MainMenuView mainMenu = new MainMenuView();
+       mainMenu.getInput();
+       
     }
     
 }
