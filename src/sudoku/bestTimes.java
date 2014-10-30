@@ -27,7 +27,8 @@ public class bestTimes {
 
     public void printBestTimes(){
         for(int i = 0;i<5;i++){
-            System.out.println(bestTimes[i]/60 + ":" + bestTimes[i]%60);
+            System.out.format("%02d:%02d%n", bestTimes[i]/60, bestTimes[i]%60);
+            
         }
     }
 
