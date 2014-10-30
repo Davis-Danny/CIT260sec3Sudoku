@@ -11,11 +11,10 @@ package sudoku;
  */
 public class Sudoku {
    public static void main(String[] args) {
-        players getPlayer = new players();
-        getPlayer.recordName();
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.getInput();
- 
+        
+       MainMenuView mainMenu = new MainMenuView();
+       mainMenu.getInput();
+       
     }
     
 }
