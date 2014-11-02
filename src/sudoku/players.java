@@ -45,8 +45,9 @@ public class players {
         }
         else {
             pastNames[4] = name;
-            displayPlayers();
-            
+////            displayPlayers();
+//            System.out.println("Searching for name...");
+//            searchName();
         }
             
             
@@ -62,6 +63,8 @@ public class players {
         int playerNumber[] = new int[5];
         int p = 0;
         int j = 1;
+        
+        
         for(int t = 0; t < pastNames.length; t++) {
             playerNumber[p] = j;
             System.out.println(playerNumber[p] + "." + " " + pastNames[t]);
@@ -69,5 +72,21 @@ public class players {
             j++;
     }
     }
-    
+      public void searchName() {
+        boolean found = false;
+        for(String x: pastNames) {
+            if(x=="TJ") {
+                found = true;
+                break;
+            }
+            }
+            if(found)
+                System.out.println("Name found!");
+            else
+                System.out.println("Name not found");
+        }
 }
+
+    
+    
+
