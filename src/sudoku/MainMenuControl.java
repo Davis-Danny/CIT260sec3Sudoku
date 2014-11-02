@@ -26,6 +26,13 @@ public class MainMenuControl {
         myInput.getInput();
     }
     
+    public void displayPlayers(){
+        players listPlayers = new players();
+        listPlayers.displayPlayers();
+        System.out.println("Searching for name...");
+            listPlayers.searchName();
+    }
+    
     public void displayQuit() {
         ExitMenuView exit = new ExitMenuView();
         exit.getIntake();
