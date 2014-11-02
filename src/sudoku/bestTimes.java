@@ -57,6 +57,23 @@ public class bestTimes {
         bestTimeMessage = "Your best time on medium is:\n" + "\"" + minutes + ":" + seconds + "\"";
         return bestTimeMessage;
     }
+    
+    public int getTotalEasyTime(int times[]) {
+        
+        int totalEasyTime = 0;
+        
+        for (int i = 0; i < times.length - 1; i++) {
+            if (times[i] < 0) {
+                System.out.println("Invalid Time Entered");
+            }
+        }
+        
+        for (int i : times) {
+            totalEasyTime += i;
+        }
+        
+        return totalEasyTime;
+    }
 
     public void sortBestTimes() {
         for (int j = 0; j <= 3; j++) {

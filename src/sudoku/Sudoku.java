@@ -15,6 +15,7 @@ public class Sudoku {
        MainMenuView mainMenu = new MainMenuView();
        mainMenu.getInput();
        
+       
     }
     
 }
