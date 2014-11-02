@@ -56,6 +56,18 @@ public class Board {
         }
         return true;
     }
+    
+    public void getAverage(){
+        int total = 0;
+        int count = 0;
+        for(int y[]:grid){
+            for(int x:y){
+                total += x;
+                count++;
+            }
+        }
+        System.out.println("The average value of the board is: " + total/count);
+    }
 
     public void displayGrid() {
         System.out.println("  012 345 678 ");
@@ -72,6 +84,7 @@ public class Board {
         printRow(7);
         printRow(8);
         System.out.println(" +---+---+---+");
+        getAverage();
     }
 
     public void printRow(int row) {
