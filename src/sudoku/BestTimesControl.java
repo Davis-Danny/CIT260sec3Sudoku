@@ -27,8 +27,8 @@ public class BestTimesControl {
 
     public void printBestTimes(){
         sortBestTimes();
-        for(int i = 0;i<5;i++){
-            System.out.format("%02d:%02d%n", bestTimes[i]/60, bestTimes[i]%60);
+        for(int i:bestTimes){
+            System.out.format("%02d:%02d%n", i/60, i%60);
             
         }
     }
