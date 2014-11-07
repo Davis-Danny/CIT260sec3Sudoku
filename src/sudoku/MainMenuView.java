@@ -17,7 +17,6 @@ public class MainMenuView {
         {"N", "New Game"},
         {"B", "Best Times"},
         {"H", "Help"},
-//       {"P", "Players"},
         {"Q", "Quit"}
     };
     
@@ -46,9 +45,7 @@ public class MainMenuView {
                 case "H":
                     mainMenuControl.displayHelp();
                     break;
-                case "P":
-                    mainMenuControl.displayPlayers();
-                    break;
+              
                 case "Q":
                     mainMenuControl.displayQuit();
                     break;
