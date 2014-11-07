@@ -24,6 +24,7 @@ public class Interface {
         while (!board.checkBoard()) {
             System.out.println("Column:");
             command = input.next();
+            command = command.trim().toUpperCase();
             if("Q".equals(command)){
                 ExitMenuView exit = new ExitMenuView();
                 if(exit.getIntake()){
