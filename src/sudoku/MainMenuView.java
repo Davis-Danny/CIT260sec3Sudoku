@@ -17,7 +17,7 @@ public class MainMenuView {
         {"N", "New Game"},
         {"B", "Best Times"},
         {"H", "Help"},
-       {"P", "Players"},
+//       {"P", "Players"},
         {"Q", "Quit"}
     };
     
