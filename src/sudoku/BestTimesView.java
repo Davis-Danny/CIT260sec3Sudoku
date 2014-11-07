@@ -30,7 +30,7 @@ public class BestTimesView {
         do {
             
             
-            control.showTimes();
+            control.printBestTimes();
             display();
             
             command = input.nextLine();

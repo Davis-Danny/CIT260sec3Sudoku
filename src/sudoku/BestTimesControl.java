@@ -10,32 +10,27 @@ package sudoku;
  * @author Danny
  */
 public class BestTimesControl {
-
-    String time1 = "Not yet taken!";
-    String time2 = "Not yet taken!";
-    String time3 = "Not yet taken!";
-    String time4 = "Not yet taken!";
-    String time5 = "Not yet taken!";
-
+    
+    int[] bestTimes = new int[5];
+    
     public void BestTimesControl() {
         reset();
     }
 
     public void reset() {
-        time1 = "Not yet taken!";
-        time2 = "Not yet taken!";
-        time3 = "Not yet taken!";
-        time4 = "Not yet taken!";
-        time5 = "Not yet taken!";
+        bestTimes[0] = 180;
+        bestTimes[1] = 120;
+        bestTimes[2] = 90;
+        bestTimes[3] = 60;
+        bestTimes[4] = 30;
     }
 
-    public void showTimes() {
-        System.out.println(time1);
-        System.out.println(time2);
-        System.out.println(time3);
-        System.out.println(time4);
-        System.out.println(time5);
-
+    public void printBestTimes(){
+        sortBestTimes();
+        for(int i = 0;i<5;i++){
+            System.out.format("%02d:%02d%n", bestTimes[i]/60, bestTimes[i]%60);
+            
+        }
     }
 
     public void quit() {
@@ -46,5 +41,18 @@ public class BestTimesControl {
     public void toMain() {
         MainMenuView main = new MainMenuView();
         main.getInput();
+    }
+    
+    public void sortBestTimes() {
+        for (int j = 0; j <= 3; j++) {
+            for (int i = j+1; i <= 4; i++) {
+                if (bestTimes[j] > bestTimes[i]) {
+                    int temp = bestTimes[i];
+                    bestTimes[i] = bestTimes[j];
+                    bestTimes[j] = temp;
+                }
+               
+            }
+        }
     }
 }
