@@ -26,6 +26,7 @@ public class NewGameView {
     
     public void getdifficulty() {
         
+        int time;
         String command;
         Scanner input = new Scanner(System.in);
         boolean repeat = true;

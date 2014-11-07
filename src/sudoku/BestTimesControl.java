@@ -11,9 +11,9 @@ package sudoku;
  */
 public class BestTimesControl {
     
-    int[] bestTimes = new int[5];
+    static int[] bestTimes = new int[5];
     
-    public void BestTimesControl() {
+    public BestTimesControl() {
         reset();
     }
 
@@ -53,6 +53,14 @@ public class BestTimesControl {
                 }
                
             }
+        }
+    }
+    public void addTime(int newTime){
+        sortBestTimes();
+        if(newTime<bestTimes[4]){
+            bestTimes[4] = newTime;
+            System.out.println("Congatulations! You got a new best time!");
+            printBestTimes();
         }
     }
 }

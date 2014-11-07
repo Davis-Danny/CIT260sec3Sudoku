@@ -6,6 +6,8 @@
 package sudoku;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -19,18 +21,22 @@ public class Interface {
     String command;
 
     public void runGame(Board board) {
+        Timer timer = new Timer();
+        int time = 0;
+        SecondTask add = new SecondTask(time);
+        timer.scheduleAtFixedRate(add, 0, 1000);
+
         board.displayGrid();
         Scanner input = new Scanner(System.in);
         while (!board.checkBoard()) {
             System.out.println("Column:");
             command = input.next();
             command = command.trim().toUpperCase();
-            if("Q".equals(command)){
+            if ("Q".equals(command)) {
                 ExitMenuView exit = new ExitMenuView();
-                if(exit.getIntake()){
+                if (exit.getIntake()) {
                     break;
-                }
-                else {
+                } else {
                     board.displayGrid();
                     continue;
                 }
@@ -54,9 +60,32 @@ public class Interface {
             }
             board.addNumber(value, x, y);
             board.displayGrid();
+            time = add.getTime();
+            System.out.format("%02d:%02d%n", time / 60, time % 60);
         }
-        if(board.checkBoard())System.out.println("Congratulations!");
+        if (board.checkBoard()) {
+            System.out.println("Congratulations!");
+            BestTimesControl times = new BestTimesControl();
+            times.addTime(time);
+        }
 
     }
-    
+
+    private static class SecondTask extends TimerTask {
+
+        int time;
+
+        public SecondTask(int time) {
+            this.time = time;
+        }
+
+        @Override
+        public void run() {
+            time++;
+        }
+
+        public int getTime() {
+            return time;
+        }
+    }
 }
