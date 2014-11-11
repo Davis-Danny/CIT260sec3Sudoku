@@ -5,6 +5,16 @@
  */
 package sudoku;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import static java.nio.file.Files.readAllLines;
+import java.nio.file.Path;
+import static java.nio.file.Files.write;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author Danny
@@ -14,6 +24,7 @@ public class Board {
     private int[][] grid;
     private int[][] solution;
     private String difficulty;
+    private ArrayList<String> listGrid = new ArrayList<>();
 
     public void setBoard(String difficulty) {
         grid = new int[9][9];
@@ -75,62 +86,85 @@ public class Board {
     }
 
     public void printRow(int row) {
-        System.out.println(""+ row + "|" + displayCell(0, row) + displayCell(1, row)
+        System.out.println("" + row + "|" + displayCell(0, row) + displayCell(1, row)
                 + displayCell(2, row) + "|" + displayCell(3, row) + displayCell(4, row)
                 + displayCell(5, row) + "|" + displayCell(6, row) + displayCell(7, row)
                 + displayCell(8, row) + "|");
     }
 
     public String displayCell(int x, int y) {
-        if(grid[x][y]!=0){
+        if (grid[x][y] != 0) {
             String value = "" + grid[x][y];
             return value;
-        }
-        else
+        } else {
             return " ";
         }
+    }
+
+    public void writeBoard(int file) {
+        int[][] flippedGrid = new int[9][9];
+        String filename = "Board" + file + ".sb1";
+        Path path = Paths.get("Sudoku Saves\\" + filename);
+        if (Files.exists(path)) {
+            System.out.println("File already exists.");
+            return;
+        }
+        if (Files.notExists(path.getParent())) {
+            try {
+                Files.createDirectory(path.getParent());
+            } catch (IOException ex) {
+                System.out.println("Error:" + ex.getMessage());
+            }
+        }
+        if (!listGrid.isEmpty()) {
+            listGrid.clear();
+        }
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                flippedGrid[j][i] = grid[i][j];
+            }
+        }
+        for (int[] j : flippedGrid) {
+            listGrid.add(Arrays.toString(j));
+        }
+        try {
+            write(path, listGrid, StandardOpenOption.CREATE_NEW);
+        } catch (IOException ex) {
+            System.out.println("Error:" + ex.getMessage());
+        }
+    }
+
+    public void readBoard(int file) {
+        String filename = "Board" + file + ".sb1";
+        Path path = Paths.get("c:\\Sudoku Saves\\" + filename);
+        int[][] flippedGrid = new int[9][9];
+        if (Files.notExists(path)) {
+            System.out.println("File not found.");
+            return;
+        }
+        if (!listGrid.isEmpty()) {
+            listGrid.clear();
+        }
+        try {
+            listGrid = (ArrayList<String>) readAllLines(path);
+        } catch (IOException ex) {
+            System.out.println("ERROR:" + ex.getMessage());
+        }
+        for (int j = 0; j < 9; j++) {
+            String stringRow = listGrid.get(j);
+            String[] stringsRow = stringRow.replaceAll("\\[", "").replaceAll("\\]", "").split(", ");
+            for (int i = 0; i < 9; i++) {
+                flippedGrid[j][i] = Integer.parseInt(stringsRow[i]);
+            }
+        }
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                grid[j][i] = flippedGrid[i][j];
+            }
+        }
+    }
 
     public void fillEasy() {
-        grid[0][0] = 4;
-        grid[1][0] = 9;
-        grid[2][0] = 5;
-        grid[5][0] = 6;
-        grid[6][0] = 7;
-        grid[4][1] = 9;
-        grid[8][1] = 4;
-        grid[1][2] = 2;
-        grid[2][2] = 1;
-        grid[6][2] = 8;
-        grid[8][2] = 9;
-        grid[0][3] = 6;
-        grid[1][3] = 5;
-        grid[2][3] = 3;
-        grid[3][3] = 9;
-        grid[4][3] = 8;
-        grid[6][3] = 2;
-        grid[8][3] = 1;
-        grid[0][4] = 2;
-        grid[3][4] = 6;
-        grid[5][4] = 1;
-        grid[8][4] = 7;
-        grid[0][5] = 9;
-        grid[2][5] = 7;
-        grid[4][5] = 2;
-        grid[5][5] = 3;
-        grid[6][5] = 6;
-        grid[7][5] = 5;
-        grid[8][5] = 8;
-        grid[0][6] = 5;
-        grid[2][6] = 9;
-        grid[6][6] = 1;
-        grid[7][6] = 7;
-        grid[0][7] = 7;
-        grid[4][7] = 3;
-        grid[2][8] = 4;
-        grid[3][8] = 5;
-        grid[6][8] = 9;
-        grid[7][8] = 2;
-        grid[8][8] = 6;
 
         solution[0][0] = 4;
         solution[1][0] = 9;
@@ -213,16 +247,17 @@ public class Board {
         solution[6][8] = 9;
         solution[7][8] = 2;
         solution[8][8] = 6;
+        readBoard(1);
     }
 
     public void fillMedium() {
         grid[0][0] = 1;
         grid[1][0] = 2;
-        
+
         solution[0][0] = 1;
         solution[1][0] = 2;
         solution[2][0] = 3;
-        
+
     }
 
     public void fillHard() {
