@@ -15,9 +15,9 @@ import java.util.TimerTask;
  */
 public class Interface {
 
-    int x;
-    int y;
-    int value;
+    private int x;
+    private int y;
+    private int value;
     String command;
 
     public void runGame(Board board) {
@@ -73,7 +73,7 @@ public class Interface {
 
     private static class SecondTask extends TimerTask {
 
-        int time;
+        private int time;
 
         public SecondTask(int time) {
             this.time = time;
