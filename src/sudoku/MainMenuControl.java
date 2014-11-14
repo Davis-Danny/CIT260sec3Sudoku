@@ -9,7 +9,7 @@ package sudoku;
  *
  * @author Jeff Smith
  */
-public class MainMenuControl {
+public class MainMenuControl implements java.io.Serializable {
     
     public void displayNewGame() {
         NewGameView mylevels = new NewGameView();

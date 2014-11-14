@@ -13,7 +13,7 @@ import java.util.TimerTask;
  *
  * @author Danny
  */
-public class Interface {
+public class Interface implements java.io.Serializable {
 
     private int x;
     private int y;

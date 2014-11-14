@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Jeff Smith
  */
-public class MainMenuView {
+public class MainMenuView implements java.io.Serializable {
     
     private final static String[][] menuItems = {
         {"N", "New Game"},

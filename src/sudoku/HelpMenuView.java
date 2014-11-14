@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Jeff Smith
  */
-public class HelpMenuView {
+public class HelpMenuView implements java.io.Serializable {
     
     private final static String[][] menuItems = {
         {"I", "Instructions"},

@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Danny and Scott
  */
-public class BestTimesView {
+public class BestTimesView implements java.io.Serializable{
     
     
     

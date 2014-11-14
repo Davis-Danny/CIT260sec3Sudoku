@@ -9,7 +9,7 @@ package sudoku;
  *
  * @author Danny Davis
  */
-public class Sudoku {
+public class Sudoku implements java.io.Serializable {
    public static void main(String[] args) {
         
        MainMenuView mainMenu = new MainMenuView();

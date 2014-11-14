@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Travis
  */
-public class NewGameView {
+public class NewGameView implements java.io.Serializable {
     private final static String[][] menuItems = {
         {"E", "Easy"},
         {"M", "Medium"},

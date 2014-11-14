@@ -9,7 +9,7 @@ package sudoku;
  *
  * @author Travis
  */
-public class NewGameControl {
+public class NewGameControl implements java.io.Serializable {
     
     String difficulty = "";
     String easy = "This is the Easy Board Level!";

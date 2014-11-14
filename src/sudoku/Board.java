@@ -19,7 +19,7 @@ import java.util.Arrays;
  *
  * @author Danny
  */
-public class Board {
+public class Board implements java.io.Serializable{
 
     private int[][] grid;
     private int[][] solution;

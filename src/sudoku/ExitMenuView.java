@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Scott Hidlebaugh
  */
-public class ExitMenuView {
+public class ExitMenuView implements java.io.Serializable{
 
     private final static String[][] menuItems = {
         {"E", "Exit"},

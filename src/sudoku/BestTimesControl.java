@@ -9,7 +9,7 @@ package sudoku;
  *
  * @author Danny
  */
-public final class BestTimesControl {
+public final class BestTimesControl implements java.io.Serializable{
     
    private static final int[] bestTimes = new int[5];
     
