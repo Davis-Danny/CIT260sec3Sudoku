@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Danny and Scott
  */
-public class BestTimesView {
+public class BestTimesView implements java.io.Serializable{
     
     
     
@@ -55,7 +55,7 @@ public class BestTimesView {
     }    
 
 
-    public final void display() {
+    private void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 

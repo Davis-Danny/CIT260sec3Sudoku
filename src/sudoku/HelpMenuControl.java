@@ -9,7 +9,7 @@ package sudoku;
  *
  * @author Jeff Smith
  */
-public class HelpMenuControl {
+public class HelpMenuControl implements java.io.Serializable{
     
     public void displayInstructions(){
         System.out.println("Pick a square to enter a number from 1 – 9 that you believe goes in that spot."

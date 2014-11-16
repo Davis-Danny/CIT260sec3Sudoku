@@ -11,9 +11,9 @@ package sudoku;
  */
 public class NewGameControl {
     
-    String difficulty = "";
-    String easy = "This is the Easy Board Level!";
-    String medium = "This is the Medium Board Level!";
-    String hard = "This is the Hard Board Level!";
+    static String difficulty = "";
+    static String easy = "This is the Easy Board Level!";
+    static String medium = "This is the Medium Board Level!";
+    static String hard = "This is the Hard Board Level!";
     
 }

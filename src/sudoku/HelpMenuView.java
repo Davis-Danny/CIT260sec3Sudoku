@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Jeff Smith
  */
-public class HelpMenuView {
+public class HelpMenuView implements java.io.Serializable {
     
     private final static String[][] menuItems = {
         {"I", "Instructions"},
@@ -56,7 +56,7 @@ public class HelpMenuView {
         return;
     }
     
-        public final void display() {
+        private void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 

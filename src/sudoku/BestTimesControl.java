@@ -9,9 +9,9 @@ package sudoku;
  *
  * @author Danny
  */
-public class BestTimesControl {
+public final class BestTimesControl implements java.io.Serializable{
     
-    static int[] bestTimes = new int[5];
+   private static final int[] bestTimes = new int[5];
     
     public BestTimesControl() {
         reset();
@@ -43,7 +43,7 @@ public class BestTimesControl {
         main.getInput();
     }
     
-    public void sortBestTimes() {
+    private void sortBestTimes() {
         for (int j = 0; j <= 3; j++) {
             for (int i = j+1; i <= 4; i++) {
                 if (bestTimes[j] > bestTimes[i]) {

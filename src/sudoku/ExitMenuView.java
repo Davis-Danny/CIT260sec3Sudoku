@@ -11,13 +11,13 @@ import java.util.Scanner;
  *
  * @author Scott Hidlebaugh
  */
-public class ExitMenuView {
+public class ExitMenuView implements java.io.Serializable{
 
     private final static String[][] menuItems = {
         {"E", "Exit"},
         {"C", "Cancel"},};
 
-    private ExitMenuControl ExitMenuControl = new ExitMenuControl();
+    
 
     public boolean getIntake() {
 
@@ -33,11 +33,11 @@ public class ExitMenuView {
 
             switch (command) {
                 case "E":
-                    System.out.println(ExitMenuControl.exit);
+                    System.out.println("The game will now exit.");
                     repeat = false;
                     return true;
                 case "C":
-                    System.out.println(ExitMenuControl.cancel);
+                    System.out.println("Your game will now continue");
                     repeat = false;
                     return false;
 
@@ -47,7 +47,7 @@ public class ExitMenuView {
         return false;
     }
 
-    public final void display() {
+    private void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 

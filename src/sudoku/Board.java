@@ -19,7 +19,7 @@ import java.util.Arrays;
  *
  * @author Danny
  */
-public class Board {
+public class Board implements java.io.Serializable{
 
     private int[][] grid;
     private int[][] solution;
@@ -33,7 +33,7 @@ public class Board {
         fill();
     }
 
-    public void fill() {
+    private void fill() {
         switch (difficulty) {
             case "E":
                 fillEasy();
@@ -53,7 +53,7 @@ public class Board {
         grid[x][y] = num;
     }
 
-    public boolean checkCell(int x, int y) {
+    private boolean checkCell(int x, int y) {
         return (grid[x][y] == solution[x][y]);
     }
 
@@ -85,14 +85,14 @@ public class Board {
         System.out.println(" +---+---+---+");
     }
 
-    public void printRow(int row) {
+    private void printRow(int row) {
         System.out.println("" + row + "|" + displayCell(0, row) + displayCell(1, row)
                 + displayCell(2, row) + "|" + displayCell(3, row) + displayCell(4, row)
                 + displayCell(5, row) + "|" + displayCell(6, row) + displayCell(7, row)
                 + displayCell(8, row) + "|");
     }
 
-    public String displayCell(int x, int y) {
+    private String displayCell(int x, int y) {
         if (grid[x][y] != 0) {
             String value = "" + grid[x][y];
             return value;
@@ -101,7 +101,7 @@ public class Board {
         }
     }
 
-    public void writeBoard(int file) {
+    private void writeBoard(int file) {
         int[][] flippedGrid = new int[9][9];
         String filename = "Board" + file + ".sb1";
         Path path = Paths.get("Sudoku Saves\\" + filename);
@@ -134,7 +134,7 @@ public class Board {
         }
     }
 
-    public void readBoard(int file) {
+    private void readBoard(int file) {
         String filename = "Board" + file + ".sb1";
         Path path = Paths.get("c:\\Sudoku Saves\\" + filename);
         int[][] flippedGrid = new int[9][9];
@@ -164,7 +164,7 @@ public class Board {
         }
     }
 
-    public void fillEasy() {
+    private void fillEasy() {
 
         solution[0][0] = 4;
         solution[1][0] = 9;
@@ -250,7 +250,7 @@ public class Board {
         readBoard(1);
     }
 
-    public void fillMedium() {
+    private void fillMedium() {
         grid[0][0] = 1;
         grid[1][0] = 2;
 
@@ -260,7 +260,7 @@ public class Board {
 
     }
 
-    public void fillHard() {
+    private void fillHard() {
 
     }
 }
