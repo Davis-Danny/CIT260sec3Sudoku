@@ -17,7 +17,7 @@ public class BestTimesControl {
         reset();
     }
 
-    public void reset() {
+    private void reset() {
         bestTimes[0] = 180;
         bestTimes[1] = 120;
         bestTimes[2] = 90;
