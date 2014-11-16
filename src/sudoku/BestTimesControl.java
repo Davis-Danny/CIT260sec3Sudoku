@@ -17,7 +17,7 @@ public final class BestTimesControl implements java.io.Serializable{
         reset();
     }
 
-    private void reset() {
+    public void reset() {
         bestTimes[0] = 180;
         bestTimes[1] = 120;
         bestTimes[2] = 90;
