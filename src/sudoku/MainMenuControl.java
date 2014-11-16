@@ -32,5 +32,23 @@ public class MainMenuControl implements java.io.Serializable {
         ExitMenuView exit = new ExitMenuView();
         exit.getIntake();
     }
+
+    public MainMenuControl() {
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "MainMenuControl{" + '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
     
 }
