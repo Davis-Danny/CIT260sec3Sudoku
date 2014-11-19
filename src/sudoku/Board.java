@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -32,6 +33,10 @@ public class Board implements java.io.Serializable {
         this.difficulty = difficulty;
         fill();
     }
+    
+    public void edit(){
+        setBoard("A");
+    }
 
     private void fill() {
         switch (difficulty) {
@@ -43,6 +48,9 @@ public class Board implements java.io.Serializable {
                 break;
             case "H":
                 readBoards(3);
+                break;
+            case "A":
+                buildBoard();
                 break;
             default:
                 break;
@@ -60,12 +68,46 @@ public class Board implements java.io.Serializable {
     public boolean checkBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (grid[i][j] != solution[i][j]) {
-                    return false;
-                }
+                return checkCell(i, j);
             }
         }
         return true;
+    }
+
+    public void buildBoard() {
+        int file;
+        Scanner input = new Scanner(System.in);
+        print("Board number:");
+        file = Integer.parseInt(input.next());
+        readBoards(file);
+        displayGrid();
+        while (playGrid());
+        writeBoard(file, "grid", true);
+        for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < 9; i++) {
+                if (grid[i][j] == 0) {
+                    grid[i][j] = solution[i][j];
+                }
+            }
+        }
+        print("Input solution values");
+        for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < 9; i++) {
+                if (grid[i][j] == 0) {
+                    displayGrid();
+                    print("Insert solution value for: " + i + "," + j);
+                    addNumber(Integer.parseInt(input.next()), i, j);
+                }
+            }
+        }
+        displayGrid();
+        while (playGrid());
+        solution = grid;
+        writeBoard(file, "solution", true);
+    }
+
+    public void print(String output) {
+        System.out.println(output);
     }
 
     public void displayGrid() {
@@ -101,14 +143,24 @@ public class Board implements java.io.Serializable {
         }
     }
 
-    private void writeBoard(int file, String type) {
+    private void writeBoard(int file, String type, boolean replace) {
         int[][] board = checkType(type);
         int[][] flippedGrid = new int[9][9];
         String filename = "Board" + file + "-" + type + ".sb2";
         Path path = Paths.get("Sudoku Saves\\" + filename);
         if (Files.exists(path)) {
             System.out.println("File already exists.");
-            return;
+            if (!replace) {
+                print("canceling");
+                return;
+            } else {
+                print("overriding");
+                try {
+                    Files.delete(path);
+                } catch (IOException x) {
+                    print("ERROR: " + x.getMessage());
+                }
+            }
         }
         if (Files.notExists(path.getParent())) {
             try {
@@ -183,4 +235,43 @@ public class Board implements java.io.Serializable {
         readBoard(file, "grid");
     }
 
+    public boolean playGrid() {
+        Scanner input = new Scanner(System.in);
+        String command;
+        int x;
+        int y;
+        int value;
+        System.out.println("Column:");
+        command = input.next();
+        command = command.trim().toUpperCase();
+        if ("Q".equals(command)) {
+            ExitMenuView exit = new ExitMenuView();
+            if (exit.getIntake()) {
+                return false;
+            } else {
+                displayGrid();
+                return true;
+            }
+        }
+        x = Integer.parseInt(command);
+        if (x < 0 || x > 8) {
+            System.out.println("ERROR: Invalid X value");
+            return true;
+        }
+        System.out.println("Row:");
+        y = Integer.parseInt(input.next());
+        if (y < 0 || y > 8) {
+            System.out.println("ERROR: Invalid Y value");
+            return true;
+        }
+        System.out.println("Value:");
+        value = Integer.parseInt(input.next());
+        if (value < 0 || value > 9) {
+            System.out.println("ERROR: Invalid value");
+            return true;
+        }
+        addNumber(value, x, y);
+        displayGrid();
+        return true;
+    }
 }

@@ -25,7 +25,7 @@ public class NewGameView implements java.io.Serializable {
     private NewGameControl NewGameControl = new NewGameControl();
     
     public void getdifficulty() {
-        
+        Board board = new Board();
         int time;
         String command;
         Scanner input = new Scanner(System.in);
@@ -50,6 +50,9 @@ public class NewGameView implements java.io.Serializable {
                     System.out.println(NewGameControl.hard);
                     repeat = false;
                     break;
+                case"A":
+                    board.edit();
+                    break;
                 default:
                     System.out.println("Pick a difficulty from above.");
                     continue;
@@ -61,7 +64,6 @@ public class NewGameView implements java.io.Serializable {
         while (repeat);
 
         NewGameControl.difficulty = command;
-        Board board = new Board();
         board.setBoard(command);
         Interface myInterface = new Interface();
         myInterface.runGame(board);
