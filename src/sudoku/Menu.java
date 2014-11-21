@@ -11,8 +11,13 @@ import java.util.Scanner;
  *
  * @author Travis
  */
-public class Menu {
-    private final static String[][] menuItems = null;
+public abstract class Menu {
+    private  static String[][] menuItems = null;
+    
+    
+    public Menu (String[][] menuItems){
+    this.menuItems=menuItems;}
+            
     
     public void getInput() {
         
@@ -26,24 +31,7 @@ public class Menu {
             command = input.nextLine();
             command = command.trim().toUpperCase();
             
-            switch (command) {
-                
-                case "N":
-                    mainMenuControl.displayNewGame();
-                    break;
-                case "B":
-                    mainMenuControl.displayBestTimes();
-                    break;
-                case "H":
-                    mainMenuControl.displayHelp();
-                    break;
-              
-                case "Q":
-                    mainMenuControl.displayQuit();
-                    break;
-                default:
-                    System.out.println("Enter a valid command");
-            }
+            execute(command);
         }
         while (!command.equals("Q"));
     }    
@@ -51,13 +39,16 @@ public class Menu {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 
-        for (int i = 0; i < MainMenuView.menuItems.length; i++) {
+        for (int i = 0; i < menuItems.length; i++) {
             System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
         }
         System.out.println("\t===============================================================\n");
     }
     
+    public abstract void execute(String command);
      
 
+
+    
 }
 

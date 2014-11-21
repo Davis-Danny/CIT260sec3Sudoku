@@ -12,7 +12,7 @@ package sudoku;
 public class Sudoku implements java.io.Serializable {
    public static void main(String[] args) {
         
-       MainMenuView mainMenu = new MainMenuView();
+       MainMenu mainMenu = new MainMenu();
        mainMenu.getInput();
        
        
