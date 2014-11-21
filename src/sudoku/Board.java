@@ -6,6 +6,7 @@
 package sudoku;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import static java.nio.file.Files.readAllLines;
 import java.nio.file.Path;
@@ -181,7 +182,7 @@ public class Board implements java.io.Serializable {
             listGrid.add(Arrays.toString(j));
         }
         try {
-            write(path, listGrid, StandardOpenOption.CREATE_NEW);
+            write(path, listGrid, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
         } catch (IOException ex) {
             System.out.println("Error:" + ex.getMessage());
         }
@@ -200,7 +201,7 @@ public class Board implements java.io.Serializable {
             listGrid.clear();
         }
         try {
-            listGrid = (ArrayList<String>) readAllLines(path);
+            listGrid = (ArrayList<String>) readAllLines(path,StandardCharsets.UTF_8);
         } catch (IOException ex) {
             System.out.println("ERROR:" + ex.getMessage());
         }
