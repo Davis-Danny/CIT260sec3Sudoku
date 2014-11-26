@@ -3,59 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sudoku;
+package citbyui.cit260.sudoku.menus;
 
 import java.util.Scanner;
 
 /**
  *
- * @author Danny and Scott
+ * @author Travis
  */
-public class BestTimesView implements java.io.Serializable{
+public abstract class Menu {
+    private  static String[][] menuItems = null;
     
     
-    
-    private final static String[][] menuItems = {
-        {"R", "Reset Times"},
-        {"M", "Return To Main Menu"},
-        {"Q", "Quit"},
-    };
-    
-    private final BestTimesControl control = new BestTimesControl();
+    public Menu (String[][] menuItems){
+    this.menuItems=menuItems;}
+            
     
     public void getInput() {
+        
         String command;
         Scanner input = new Scanner(System.in);
         
         do {
             
-            
-            control.printBestTimes();
-            display();
+            this.display();
             
             command = input.nextLine();
             command = command.trim().toUpperCase();
             
-            switch (command) {
-                
-                case "Q":
-                    control.quit();
-                    break;
-                case "R":
-                    control.reset();
-                    break;
-                case "M":
-                    control.toMain();
-                    break;
-                default:
-                    System.out.println("Enter a valid command");
-            }
+            execute(command);
         }
         while (!command.equals("Q"));
     }    
-
-
-    private void display() {
+    public final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 
@@ -64,5 +44,11 @@ public class BestTimesView implements java.io.Serializable{
         }
         System.out.println("\t===============================================================\n");
     }
+    
+    public abstract void execute(String command);
+     
+
+
+    
 }
 

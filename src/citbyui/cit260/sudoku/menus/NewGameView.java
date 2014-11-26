@@ -1,7 +1,9 @@
-package sudoku;
+package citbyui.cit260.sudoku.menus;
 
 
 import java.util.Scanner;
+import sudoku.Board;
+import sudoku.Interface;
 
 
 /*

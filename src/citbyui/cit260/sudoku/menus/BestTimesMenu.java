@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sudoku;
+package citbyui.cit260.sudoku.menus;
+
+import citbyui.cit260.sudoku.menus.Menu;
+import citbyui.cit260.sudoku.menus.MainMenu;
 
 /**
  *

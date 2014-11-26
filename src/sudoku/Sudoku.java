@@ -5,6 +5,8 @@
  */
 package sudoku;
 
+import citbyui.cit260.sudoku.menus.MainMenu;
+
 /**
  *
  * @author Danny Davis

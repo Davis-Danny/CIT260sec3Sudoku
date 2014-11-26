@@ -1,4 +1,4 @@
-package sudoku;
+package citbyui.cit260.sudoku.menus;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

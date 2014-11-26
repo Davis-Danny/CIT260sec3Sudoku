@@ -3,68 +3,66 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sudoku;
+package citbyui.cit260.sudoku.menus;
 
 import java.util.Scanner;
 
 /**
  *
- * @author Jeff Smith
+ * @author Danny and Scott
  */
-public class HelpMenuView implements java.io.Serializable {
+public class BestTimesView implements java.io.Serializable{
+    
+    
     
     private final static String[][] menuItems = {
-        {"I", "Instructions"},
-        {"H", "Hints"},
-        {"Q", "Quit Help"}
+        {"R", "Reset Times"},
+        {"M", "Return To Main Menu"},
+        {"Q", "Quit"},
     };
     
-    private HelpMenuControl helpMenuControl = new HelpMenuControl();
+    private final BestTimesControl control = new BestTimesControl();
     
     public void getInput() {
-        
         String command;
         Scanner input = new Scanner(System.in);
         
         do {
             
-            this.display();
+            
+            control.printBestTimes();
+            display();
             
             command = input.nextLine();
             command = command.trim().toUpperCase();
             
             switch (command) {
-                case "I":
-                    helpMenuControl.displayInstructions();
-                    break;
-                    
-                case "H":
-                    helpMenuControl.displayHints();
-                    break;
-                    
+                
                 case "Q":
+                    control.quit();
                     break;
-                    
+                case "R":
+                    control.reset();
+                    break;
+                case "M":
+                    control.toMain();
+                    break;
                 default:
-                    System.out.println("Enter a valid command.");
-                    continue;
+                    System.out.println("Enter a valid command");
             }
-         
-         }
+        }
         while (!command.equals("Q"));
-        
-        return;
-    }
-    
-        private void display() {
+    }    
+
+
+    private void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 
-        for (int i = 0; i < HelpMenuView.menuItems.length; i++) {
+        for (int i = 0; i < menuItems.length; i++) {
             System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
         }
         System.out.println("\t===============================================================\n");
     }
-        
-    
 }
+
