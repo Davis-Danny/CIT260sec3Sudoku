@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.sudoku.menus;
 
+import citbyui.cit260.sudoku.enums.MenuCommands;
 import sudoku.Board;
 import sudoku.Interface;
 
@@ -19,17 +20,17 @@ public class NewGameMenu extends Menu {
         
     }
     @Override
-    public void execute(String command) {
+    public void execute(MenuCommands command) {
         switch (command) {
-                case "E":
+                case EASY:
                     System.out.println(easy);
                     
                     break;
-                case "M":
+                case MEDIUM:
                     System.out.println(medium);
                    
                     break;
-                case "H":
+                case HARD:
                     System.out.println(hard);
                     
                     break;

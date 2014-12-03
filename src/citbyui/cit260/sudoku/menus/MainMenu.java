@@ -33,7 +33,7 @@ public class MainMenu extends Menu {
             case "B":
                 displayBestTimes();
                 break;
-            case "H":
+            case "?":
                 displayHelp();
                 break;
 

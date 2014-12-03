@@ -5,28 +5,30 @@
  */
 package citbyui.cit260.sudoku.menus;
 
+import citbyui.cit260.sudoku.enums.MenuCommands;
+
 /**
  *
  * @author Scott
  */
-public class HelpMenu extends Menu {
+public abstract class HelpMenu extends Menu {
     
     public HelpMenu() {
         super(HelpMenu.menuItems);
         
     }
-    @Override
-    public void execute(String command) {
+    public void execute(MenuCommands command) {
+    
     switch (command) {
-                case "I":
+                case INSTRUCTIONS:
                     displayInstructions();
                     break;
                     
-                case "H":
+                case HELP:
                     displayHints();
                     break;
                     
-                case "Q":
+                case QUIT:
                     break;
                     
                 default:

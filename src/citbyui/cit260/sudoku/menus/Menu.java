@@ -5,13 +5,16 @@
  */
 package citbyui.cit260.sudoku.menus;
 
+import citbyui.cit260.sudoku.enums.MenuCommands;
 import java.util.Scanner;
+import citbyui.cit260.sudoku.interfaces.DisplayInfo;
+import citbyui.cit260.sudoku.interfaces.EnterInfo;
 
 /**
  *
  * @author Travis
  */
-public abstract class Menu {
+public abstract class Menu implements DisplayInfo, EnterInfo{
     private  static String[][] menuItems = null;
     
     
@@ -35,7 +38,7 @@ public abstract class Menu {
         }
         while (!command.equals("Q"));
     }    
-    public final void display() {
+    public void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 
@@ -46,6 +49,7 @@ public abstract class Menu {
     }
     
     public abstract void execute(String command);
+    
      
 
 

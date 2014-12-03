@@ -20,7 +20,7 @@ public class BestTimesMenu extends Menu{
     }
     
     private final static String[][] menuItems = {
-        {"R", "Reset Times"},
+        {"C", "Clear Times"},
         {"M", "Return To Main Menu"},
     };
     
@@ -28,7 +28,7 @@ public class BestTimesMenu extends Menu{
     public void execute(String command) {
         switch (command) {
                 
-                case "R":
+                case "C":
                     reset();
                     break;
                 case "M":
