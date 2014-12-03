@@ -5,7 +5,7 @@
  */
 package sudoku;
 
-import citbyui.cit260.sudoku.menus.BestTimesControl;
+import citbyui.cit260.sudoku.menus.BestTimesMenu;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,7 +38,7 @@ public class Interface implements java.io.Serializable {
         }
         if (board.checkBoard()) {
             System.out.println("Congratulations!");
-            BestTimesControl times = new BestTimesControl();
+            BestTimesMenu times = new BestTimesMenu();
             times.addTime(time);
         }
 

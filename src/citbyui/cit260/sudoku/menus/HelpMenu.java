@@ -11,7 +11,7 @@ import citbyui.cit260.sudoku.enums.MenuCommands;
  *
  * @author Scott
  */
-public abstract class HelpMenu extends Menu {
+public class HelpMenu extends Menu {
     
     public HelpMenu() {
         super(HelpMenu.menuItems);

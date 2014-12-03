@@ -45,17 +45,17 @@ public class MainMenu extends Menu {
         }
     }
     public void displayNewGame() {
-        NewGameView mylevels = new NewGameView();
-        mylevels.getdifficulty();
+        NewGameMenu mylevels = new NewGameMenu();
+        mylevels.getInput();
     }
     
     public void displayBestTimes() {
-        BestTimesView times = new BestTimesView();
+        BestTimesMenu times = new BestTimesMenu();
         times.getInput();
     }
     
     public void displayHelp() {
-        HelpMenuView myInput = new HelpMenuView();
+        HelpMenu myInput = new HelpMenu();
         myInput.getInput();
     }
     
