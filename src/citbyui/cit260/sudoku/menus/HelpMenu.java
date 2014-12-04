@@ -6,6 +6,9 @@
 package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.MenuCommands;
+import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.HELP;
+import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 
 /**
  *
@@ -17,22 +20,24 @@ public class HelpMenu extends Menu {
         super(HelpMenu.menuItems);
         
     }
-    public void execute(MenuCommands command) {
+    @Override
+    public Status execute(String command) {
     
     switch (command) {
-                case INSTRUCTIONS:
+                case "I":
                     displayInstructions();
-                    break;
+                    return HELP;
                     
-                case HELP:
+                case "H":
                     displayHints();
-                    break;
+                    return HELP;
                     
-                case QUIT:
-                    break;
+                case "Q":
+                    return MAIN_MENU;
                     
                 default:
                     System.out.println("Enter a valid command.");
+                    return HELP;
             }    
     }
     private final static String[][] menuItems = {

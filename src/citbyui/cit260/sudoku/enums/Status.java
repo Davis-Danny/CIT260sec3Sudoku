@@ -10,12 +10,13 @@ package citbyui.cit260.sudoku.enums;
  * @author tjwebster
  */
 public enum Status {
-    MAINMENU("MAINMENU"),
+    MAIN_MENU("MAIN_MENU"),
     NEW_GAME("NEW_GAME"),
     PLAYING("PLAYING"),
     HELP("HELP"),
     BEST_TIMES("BEST_TIMES"),
-    EXIT("EXIT");
+    EXIT("EXIT"),
+    QUIT("QUIT");
     
     String value;
     

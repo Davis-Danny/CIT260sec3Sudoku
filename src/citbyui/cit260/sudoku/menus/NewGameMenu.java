@@ -6,6 +6,9 @@
 package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.MenuCommands;
+import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.NEW_GAME;
+import static citbyui.cit260.sudoku.enums.Status.PLAYING;
 import sudoku.Board;
 import sudoku.Interface;
 
@@ -14,52 +17,45 @@ import sudoku.Interface;
  * @author Scott
  */
 public class NewGameMenu extends Menu {
-    
+
+    String difficulty;
+
     public NewGameMenu() {
         super(NewGameMenu.menuItems);
-        
+
     }
+
     @Override
-    public void execute(MenuCommands command) {
+    public Status execute(String command) {
         switch (command) {
-                case EASY:
-                    System.out.println(easy);
-                    
-                    break;
-                case MEDIUM:
-                    System.out.println(medium);
-                   
-                    break;
-                case HARD:
-                    System.out.println(hard);
-                    
-                    break;
-                
-                default:
-                    System.out.println("Pick a difficulty from above.");
-                   
-                    
-            }
-        Board board = new Board();
-        difficulty = command;
-        board.setBoard(command);
-        Interface myInterface = new Interface();
-        myInterface.runGame(board);
-        
-}
+            case "E":
+                difficulty = "E";
+                break;
+            case "M":
+                difficulty = "M";
+                break;
+            case "H":
+                difficulty = "H";
+                break;
+
+            default:
+                System.out.println("Pick a difficulty from above.");
+                return NEW_GAME;
+
+        }
+        return PLAYING;
+
+    }
     private final static String[][] menuItems = {
         {"E", "Easy"},
         {"M", "Medium"},
         {"H", "Hard"},
         {"Q", "Quit"}
-    
-            
+
     };
-    static String difficulty = "";
-    static String easy = "This is the Easy Board Level!";
-    static String medium = "This is the Medium Board Level!";
-    static String hard = "This is the Hard Board Level!";
-    
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
 }
-
-

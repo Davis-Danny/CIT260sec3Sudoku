@@ -5,6 +5,10 @@
  */
 package sudoku;
 
+import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
+import static citbyui.cit260.sudoku.enums.Status.PLAYING;
+import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.menus.BestTimesMenu;
 import java.util.Scanner;
 import java.util.Timer;
@@ -21,7 +25,7 @@ public class Interface implements java.io.Serializable {
     private int value;
     String command;
 
-    public void runGame(Board board) {
+    public Status runGame(Board board) {
         boolean repeat = true;
         Timer timer = new Timer();
         int time = 0;
@@ -31,7 +35,12 @@ public class Interface implements java.io.Serializable {
         board.displayGrid();
         Scanner input = new Scanner(System.in);
         while (repeat) {
-            repeat = board.playGrid();
+            if(board.playGrid()==PLAYING){
+                repeat = true;
+            }
+            else{
+                return QUIT;
+            }
             time = add.getTime();
             System.out.format("%02d:%02d%n", time / 60, time % 60);
             if(board.checkBoard()) break;
@@ -39,8 +48,11 @@ public class Interface implements java.io.Serializable {
         if (board.checkBoard()) {
             System.out.println("Congratulations!");
             BestTimesMenu times = new BestTimesMenu();
-            times.addTime(time);
+            return MAIN_MENU;
+            //times.addTime(time);
         }
+        
+        return QUIT;
 
     }
 

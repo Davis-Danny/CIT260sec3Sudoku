@@ -5,12 +5,14 @@
  */
 package citbyui.cit260.sudoku.interfaces;
 
+import citbyui.cit260.sudoku.enums.Status;
+
 /**
  *
  * @author Jeff
  */
 public interface EnterInfo {
     
-    void getInput();
+    Status getInput();
     
 }

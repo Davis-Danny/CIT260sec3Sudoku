@@ -5,6 +5,9 @@
  */
 package citbyui.cit260.sudoku.menus;
 
+import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.BEST_TIMES;
+import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import citbyui.cit260.sudoku.menus.Menu;
 import citbyui.cit260.sudoku.menus.MainMenu;
 
@@ -25,17 +28,17 @@ public class BestTimesMenu extends Menu{
     };
     
     @Override
-    public void execute(String command) {
+    public Status execute(String command) {
         switch (command) {
                 
                 case "C":
                     reset();
-                    break;
+                    return BEST_TIMES;
                 case "M":
-                    toMain();
-                    break;
+                    return MAIN_MENU;
                 default:
                     System.out.println("Enter a valid command");
+                    return BEST_TIMES;
             }
     }
     private static final int[] bestTimes = new int[5];

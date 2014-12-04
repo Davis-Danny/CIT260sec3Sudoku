@@ -5,6 +5,8 @@
  */
 package citbyui.cit260.sudoku.menus;
 
+import citbyui.cit260.sudoku.enums.Status;
+
 /**
  *
  * @author Scott
@@ -23,42 +25,25 @@ public class MainMenu extends Menu {
     };
 
     @Override
-    public void execute(String command) {
+    public Status execute(String command) {
 
         switch (command) {
 
             case "N":
-                displayNewGame();
-                break;
+                return Status.NEW_GAME;
             case "B":
-                displayBestTimes();
-                break;
+                return Status.BEST_TIMES;
             case "?":
-                displayHelp();
-                break;
-
+                return Status.HELP;
             case "Q":
-                displayQuit();
-                break;
+                return Status.EXIT;
             default:
-                System.out.println("Enter a valid command");
+                return Status.MAIN_MENU;
         }
     }
-    public void displayNewGame() {
-        NewGameMenu mylevels = new NewGameMenu();
-        mylevels.getInput();
-    }
+
     
-    public void displayBestTimes() {
-        BestTimesMenu times = new BestTimesMenu();
-        times.getInput();
-    }
-    
-    public void displayHelp() {
-        HelpMenu myInput = new HelpMenu();
-        myInput.getInput();
-    }
-    
+   
    
     
     public void displayQuit() {

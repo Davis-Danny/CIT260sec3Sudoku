@@ -1,5 +1,9 @@
 package citbyui.cit260.sudoku.menus;
 
+import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.EXIT;
+import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
+import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import java.util.Scanner;
 
 /*
@@ -11,40 +15,34 @@ import java.util.Scanner;
  *
  * @author Scott Hidlebaugh
  */
-public class ExitMenuView implements java.io.Serializable{
+public class ExitMenuView implements java.io.Serializable {
 
     private final static String[][] menuItems = {
         {"E", "Exit"},
         {"C", "Cancel"},};
 
-    
-
-    public boolean getIntake() {
+    public Status getIntake() {
 
         String command;
         Scanner input = new Scanner(System.in);
-        boolean repeat = true;
-        do {
 
-            this.display();
+        this.display();
 
-            command = input.nextLine();
-            command = command.trim().toUpperCase();
+        command = input.nextLine();
+        command = command.trim().toUpperCase();
 
-            switch (command) {
-                case "E":
-                    System.out.println("The game will now exit.");
-                    repeat = false;
-                    return true;
-                case "C":
-                    System.out.println("Your game will now continue");
-                    repeat = false;
-                    return false;
+        switch (command) {
+            case "E":
+                System.out.println("The game will now exit.");
+                return QUIT;
+            case "C":
+                System.out.println("Your game will now continue");
+                return MAIN_MENU;
+            default:
+                return EXIT;
 
-            }
+        }
 
-        } while (repeat);
-        return false;
     }
 
     private void display() {

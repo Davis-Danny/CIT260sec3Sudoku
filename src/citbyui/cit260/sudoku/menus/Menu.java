@@ -6,6 +6,7 @@
 package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.MenuCommands;
+import citbyui.cit260.sudoku.enums.Status;
 import java.util.Scanner;
 import citbyui.cit260.sudoku.interfaces.DisplayInfo;
 import citbyui.cit260.sudoku.interfaces.EnterInfo;
@@ -14,30 +15,28 @@ import citbyui.cit260.sudoku.interfaces.EnterInfo;
  *
  * @author Travis
  */
-public abstract class Menu implements DisplayInfo, EnterInfo{
-    private  static String[][] menuItems = null;
-    
-    
-    public Menu (String[][] menuItems){
-    this.menuItems=menuItems;}
-            
-    
-    public void getInput() {
-        
+public abstract class Menu implements DisplayInfo, EnterInfo {
+
+    private static String[][] menuItems = null;
+
+    public Menu(String[][] menuItems) {
+        this.menuItems = menuItems;
+    }
+
+    public Status getInput() {
+
         String command;
         Scanner input = new Scanner(System.in);
-        
-        do {
-            
-            this.display();
-            
-            command = input.nextLine();
-            command = command.trim().toUpperCase();
-            
-            execute(command);
-        }
-        while (!command.equals("Q"));
-    }    
+
+        this.display();
+
+        command = input.nextLine();
+        command = command.trim().toUpperCase();
+
+        return execute(command);
+
+    }
+
     public void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
@@ -47,12 +46,7 @@ public abstract class Menu implements DisplayInfo, EnterInfo{
         }
         System.out.println("\t===============================================================\n");
     }
-    
-    public abstract void execute(String command);
-    
-     
 
+    public abstract Status execute(String command);
 
-    
 }
-
