@@ -6,6 +6,7 @@
 package sudoku;
 
 import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.PLAYING;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
@@ -20,30 +21,29 @@ import java.util.TimerTask;
  */
 public class Play implements java.io.Serializable {
 
-    private int x;
-    private int y;
-    private int value;
     String command;
 
     public Status runGame(Board board) {
         boolean repeat = true;
-        Timer timer = new Timer();
+        final Timer timer = new Timer();
         int time = 0;
-        SecondTask add = new SecondTask(time);
+        final SecondTask add = new SecondTask(time);
         timer.scheduleAtFixedRate(add, 0, 1000);
 
         board.displayGrid();
-        Scanner input = new Scanner(System.in);
         while (repeat) {
-            if(board.playGrid()==PLAYING){
+            if (board.playGrid() == PLAYING) {
                 repeat = true;
-            }
-            else{
-                return QUIT;
+            } else {
+                timer.cancel();
+                timer.purge();
+                return EXIT;
             }
             time = add.getTime();
             System.out.format("%02d:%02d%n", time / 60, time % 60);
-            if(board.checkBoard()) break;
+            if (board.checkBoard()) {
+                break;
+            }
         }
         if (board.checkBoard()) {
             System.out.println("Congratulations!");
@@ -51,12 +51,12 @@ public class Play implements java.io.Serializable {
             return MAIN_MENU;
             //times.addTime(time);
         }
-        
+
         return QUIT;
 
     }
 
-    private static class SecondTask extends TimerTask {
+    private static final class SecondTask extends TimerTask {
 
         private int time;
 

@@ -6,6 +6,7 @@
 package sudoku;
 
 import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.PLAYING;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.menus.ExitMenuView;
@@ -250,7 +251,7 @@ public class Board implements java.io.Serializable {
         command = input.next();
         command = command.trim().toUpperCase();
         if ("Q".equals(command)) {
-            return QUIT;
+            return EXIT;
         }
         x = Integer.parseInt(command);
         if (x < 0 || x > 8) {
