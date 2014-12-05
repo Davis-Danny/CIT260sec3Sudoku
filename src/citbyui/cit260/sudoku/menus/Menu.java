@@ -23,6 +23,7 @@ public abstract class Menu implements DisplayInfo, EnterInfo {
         this.menuItems = menuItems;
     }
 
+    @Override
     public Status getInput() {
 
         String command;

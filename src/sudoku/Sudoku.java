@@ -39,8 +39,8 @@ public class Sudoku implements java.io.Serializable {
 
                 case NEW_GAME:
                     NewGameMenu mylevels = new NewGameMenu();
-                    difficulty = mylevels.getDifficulty();
                     status = mylevels.getInput();
+                    difficulty = mylevels.getDifficulty();
                     board = new Board();
                     board.setBoard(difficulty);
                     break;

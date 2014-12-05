@@ -20,7 +20,7 @@ public class MainMenu extends Menu {
     private final static String[][] menuItems = {
         {"N", "New Game"},
         {"B", "Best Times"},
-        {"H", "Help"},
+        {"?", "Help"},
         {"Q", "Quit"}
     };
 
@@ -38,6 +38,7 @@ public class MainMenu extends Menu {
             case "Q":
                 return Status.EXIT;
             default:
+                System.out.println("Please input a valid command.");
                 return Status.MAIN_MENU;
         }
     }
