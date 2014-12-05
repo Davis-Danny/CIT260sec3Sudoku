@@ -21,6 +21,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import citbyui.cit260.sudoku.exceptions.BoardException;
+import citbyui.cit260.sudoku.exceptions.ExitException;
 
 /**
  *
@@ -39,8 +41,8 @@ public class Board implements java.io.Serializable {
         this.difficulty = difficulty;
         fill();
     }
-    
-    public void edit(){
+
+    public void edit() {
         setBoard("A");
     }
 
@@ -111,7 +113,6 @@ public class Board implements java.io.Serializable {
 //        solution = grid;
 //        writeBoard(file, "solution", true);
 //    }
-
     public void print(String output) {
         System.out.println(output);
     }
@@ -206,7 +207,7 @@ public class Board implements java.io.Serializable {
             listGrid.clear();
         }
         try {
-            listGrid = (ArrayList<String>) readAllLines(path,StandardCharsets.UTF_8);
+            listGrid = (ArrayList<String>) readAllLines(path, StandardCharsets.UTF_8);
         } catch (IOException ex) {
             System.out.println("ERROR:" + ex.getMessage());
         }
@@ -241,38 +242,41 @@ public class Board implements java.io.Serializable {
         readBoard(file, "grid");
     }
 
-    public Status playGrid() {
-        Scanner input = new Scanner(System.in);
-        String command;
+    public Status playGrid() throws BoardException,ExitException {
         int x;
         int y;
         int value;
-        System.out.println("Column:");
-        command = input.next();
-        command = command.trim().toUpperCase();
-        if ("Q".equals(command)) {
-            return EXIT;
-        }
-        x = Integer.parseInt(command);
-        if (x < 0 || x > 8) {
-            System.out.println("ERROR: Invalid X value");
-            return PLAYING;
-        }
-        System.out.println("Row:");
-        y = Integer.parseInt(input.next());
-        if (y < 0 || y > 8) {
-            System.out.println("ERROR: Invalid Y value");
-            return PLAYING;
-        }
-        System.out.println("Value:");
-        value = Integer.parseInt(input.next());
-        if (value < 0 || value > 9) {
-            System.out.println("ERROR: Invalid value");
-            return PLAYING;
-        }
+        System.out.println("Input your coordinates, or type -1 to exit.");
+        x = getInt("Column:");
+        checkRange(x,-1,8);
+        y = getInt("Row:");
+        checkRange(y,-1,8);
+        value = getInt("Value:");
+        checkRange(value,-1,9);
         addNumber(value, x, y);
         displayGrid();
         return PLAYING;
-        
+
+    }
+
+    private int getInt(String prompt) throws BoardException {
+        int value;
+        System.out.println(prompt);
+        Scanner input = new Scanner(System.in);
+        try {
+            value = Integer.parseInt(input.next());
+        } catch (NumberFormatException e) {
+            throw new BoardException("Please input an integer.");
+        }
+        return value;
+    }
+
+    private void checkRange(int value, int min, int max) throws BoardException,ExitException{
+        if (value < min|value > max) {
+            throw new BoardException("Input a value between " + min + " and " + max + ".");
+        }
+        else if(value == -1){
+            throw new ExitException(PLAYING);
+        }
     }
 }
