@@ -18,7 +18,7 @@ import java.util.TimerTask;
  *
  * @author Danny
  */
-public class Interface implements java.io.Serializable {
+public class Play implements java.io.Serializable {
 
     private int x;
     private int y;

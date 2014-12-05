@@ -51,7 +51,7 @@ public class Sudoku implements java.io.Serializable {
                     break;
 
                 case PLAYING:
-                    Interface myInterface = new Interface();
+                    Play myInterface = new Play();
                     status = myInterface.runGame(board);
                     break;
 

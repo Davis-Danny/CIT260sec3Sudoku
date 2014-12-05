@@ -10,7 +10,7 @@ import citbyui.cit260.sudoku.enums.Status;
 import static citbyui.cit260.sudoku.enums.Status.NEW_GAME;
 import static citbyui.cit260.sudoku.enums.Status.PLAYING;
 import sudoku.Board;
-import sudoku.Interface;
+import sudoku.Play;
 
 /**
  *
