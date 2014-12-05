@@ -5,10 +5,20 @@
  */
 package citbyui.cit260.sudoku.exceptions;
 
+import citbyui.cit260.sudoku.enums.Status;
+
 /**
  *
  * @author tjwebster
  */
 public class MenuException extends Exception {
     
+    Status errorStatus;
+    public MenuException(Status status){
+        errorStatus = status;
+    }
+    
+    public Status getErrorStatus(){
+        return errorStatus;
+    }
 }

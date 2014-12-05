@@ -9,6 +9,7 @@ import citbyui.cit260.sudoku.enums.Status;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.exceptions.ExitException;
+import citbyui.cit260.sudoku.exceptions.MenuException;
 import citbyui.cit260.sudoku.menus.BestTimesMenu;
 import citbyui.cit260.sudoku.menus.ExitMenuView;
 import citbyui.cit260.sudoku.menus.HelpMenu;
@@ -21,13 +22,19 @@ import citbyui.cit260.sudoku.menus.NewGameMenu;
  */
 public class Sudoku implements java.io.Serializable {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MenuException {
 
-        takeAction(Status.MAIN_MENU);
-
+        
+        try {
+            takeAction(Status.MAIN_MENU);
+        }
+        catch(Throwable ex) {
+           System.out.println("Unexpected error:" + ex.getMessage());
+           System.out.println(ex.getStackTrace().toString());
+        }
     }
 
-    public static void takeAction(Status status) {
+    public static void takeAction(Status status) throws MenuException {
 
         String difficulty;
         Board board = new Board();
@@ -74,6 +81,8 @@ public class Sudoku implements java.io.Serializable {
                 case EXIT:
                     ExitMenuView exit = new ExitMenuView();
                     status = exit.getIntake();
+                    
+                 
             }
         }
     }

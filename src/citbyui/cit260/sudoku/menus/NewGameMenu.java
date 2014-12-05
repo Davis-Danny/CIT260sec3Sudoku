@@ -7,8 +7,10 @@ package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.MenuCommands;
 import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.BEST_TIMES;
 import static citbyui.cit260.sudoku.enums.Status.NEW_GAME;
 import static citbyui.cit260.sudoku.enums.Status.PLAYING;
+import citbyui.cit260.sudoku.exceptions.MenuException;
 import sudoku.Board;
 import sudoku.Play;
 
@@ -26,7 +28,7 @@ public class NewGameMenu extends Menu {
     }
 
     @Override
-    public Status execute(String command) {
+    public Status execute(String command) throws MenuException {
         switch (command) {
             case "E":
                 difficulty = "E";
@@ -39,8 +41,7 @@ public class NewGameMenu extends Menu {
                 break;
 
             default:
-                System.out.println("Pick a difficulty from above.");
-                return NEW_GAME;
+                throw new MenuException(NEW_GAME);
 
         }
         return PLAYING;

@@ -7,8 +7,10 @@ package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.MenuCommands;
 import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.BEST_TIMES;
 import static citbyui.cit260.sudoku.enums.Status.HELP;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
+import citbyui.cit260.sudoku.exceptions.MenuException;
 
 /**
  *
@@ -21,7 +23,7 @@ public class HelpMenu extends Menu {
         
     }
     @Override
-    public Status execute(String command) {
+    public Status execute(String command) throws MenuException {
     
     switch (command) {
                 case "I":
@@ -36,8 +38,8 @@ public class HelpMenu extends Menu {
                     return MAIN_MENU;
                     
                 default:
-                    System.out.println("Enter a valid command.");
-                    return HELP;
+                    
+                    throw new MenuException(HELP);
             }    
     }
     private final static String[][] menuItems = {

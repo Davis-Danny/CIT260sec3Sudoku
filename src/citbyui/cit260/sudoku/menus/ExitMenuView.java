@@ -1,9 +1,11 @@
 package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.BEST_TIMES;
 import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
+import citbyui.cit260.sudoku.exceptions.MenuException;
 import java.util.Scanner;
 
 /*
@@ -21,7 +23,7 @@ public class ExitMenuView implements java.io.Serializable {
         {"E", "Exit"},
         {"C", "Cancel"},};
 
-    public Status getIntake() {
+    public Status getIntake() throws MenuException {
 
         String command;
         Scanner input = new Scanner(System.in);
@@ -39,7 +41,7 @@ public class ExitMenuView implements java.io.Serializable {
                 System.out.println("Your game will now continue");
                 return MAIN_MENU;
             default:
-                return EXIT;
+                throw new MenuException(EXIT);
 
         }
 

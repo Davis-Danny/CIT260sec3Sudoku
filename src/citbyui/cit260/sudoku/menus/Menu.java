@@ -7,6 +7,7 @@ package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.MenuCommands;
 import citbyui.cit260.sudoku.enums.Status;
+import citbyui.cit260.sudoku.exceptions.MenuException;
 import java.util.Scanner;
 import citbyui.cit260.sudoku.interfaces.DisplayInfo;
 import citbyui.cit260.sudoku.interfaces.EnterInfo;
@@ -34,9 +35,19 @@ public abstract class Menu implements DisplayInfo, EnterInfo {
         command = input.nextLine();
         command = command.trim().toUpperCase();
 
-        return execute(command);
-
+        try {
+            return execute(command);
+        } 
+        catch(MenuException e){
+            System.out.println("error: Please input valid command");
+            return e.getErrorStatus();
+        }
+        
     }
+        
+       
+
+    
 
     public void display() {
         System.out.println("\n\t===============================================================");
@@ -48,6 +59,6 @@ public abstract class Menu implements DisplayInfo, EnterInfo {
         System.out.println("\t===============================================================\n");
     }
 
-    public abstract Status execute(String command);
+    public abstract Status execute(String command) throws MenuException;
 
 }

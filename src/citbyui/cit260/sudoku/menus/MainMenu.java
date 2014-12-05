@@ -6,6 +6,9 @@
 package citbyui.cit260.sudoku.menus;
 
 import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.BEST_TIMES;
+import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
+import citbyui.cit260.sudoku.exceptions.MenuException;
 
 /**
  *
@@ -25,7 +28,7 @@ public class MainMenu extends Menu {
     };
 
     @Override
-    public Status execute(String command) {
+    public Status execute(String command) throws MenuException {
 
         switch (command) {
 
@@ -38,8 +41,7 @@ public class MainMenu extends Menu {
             case "Q":
                 return Status.EXIT;
             default:
-                System.out.println("Please input a valid command.");
-                return Status.MAIN_MENU;
+                throw new MenuException(MAIN_MENU);
         }
     }
 
@@ -47,7 +49,7 @@ public class MainMenu extends Menu {
    
    
     
-    public void displayQuit() {
+    public void displayQuit() throws MenuException {
         ExitMenuView exit = new ExitMenuView();
         exit.getIntake();
     }
