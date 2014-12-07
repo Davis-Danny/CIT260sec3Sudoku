@@ -5,6 +5,8 @@
  */
 package sudoku;
 
+import citbyui.cit260.sudoku.exceptions.TimeException;
+
 /**
  *
  * @author Jeff and Danny
@@ -23,6 +25,7 @@ public final class BestTimes {
         bestTimes[2] = 90;
         bestTimes[3] = 60;
         bestTimes[4] = 30;
+        bestTimes[5] = 2;
     }
 
     public void printBestTimes(){
@@ -45,13 +48,16 @@ public final class BestTimes {
             }
         }
     }
-    public void addTime(int newTime){
+    public void addTime(int newTime)throws TimeException{
         sortBestTimes();
         if(newTime<bestTimes[4]){
             bestTimes[4] = newTime;
             System.out.println("Congatulations! You got a new best time!");
             printBestTimes();
         }
+        else if(newTime<bestTimes[5]) {
+            throw new TimeException("The was an error with your new time...sorry");
+    }
     }
     
 }
