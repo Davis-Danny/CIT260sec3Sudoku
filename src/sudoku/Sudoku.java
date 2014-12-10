@@ -11,6 +11,7 @@ import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.exceptions.ExitException;
 import citbyui.cit260.sudoku.exceptions.MenuException;
 import citbyui.cit260.sudoku.frames.MainFrame;
+import citbyui.cit260.sudoku.frames.SuperFrame;
 import citbyui.cit260.sudoku.menus.BestTimesMenu;
 import citbyui.cit260.sudoku.menus.ExitMenuView;
 import citbyui.cit260.sudoku.menus.HelpMenu;
@@ -55,8 +56,8 @@ public class Sudoku implements java.io.Serializable {
     public Sudoku(Status status) {
 
     }
-    
-    public static void takeAction() throws MenuException{
+
+    public static void takeAction() throws MenuException {
         takeAction(MAIN_MENU);
     }
 
@@ -67,13 +68,7 @@ public class Sudoku implements java.io.Serializable {
         while (status != QUIT) {
             switch (status) {
                 case MAIN_MENU:
-                    java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                            MainFrame mainFrame = new MainFrame();
-
-                            mainFrame.setVisible(true);
-                        }
-                    });
+                    displayFrame(new MainFrame());
                     return;
 
                 case NEW_GAME:
@@ -111,6 +106,21 @@ public class Sudoku implements java.io.Serializable {
                     ExitMenuView exit = new ExitMenuView();
                     status = exit.getIntake();
 
+            }
+        }
+    }
+
+    private static void displayFrame(final SuperFrame frame) {
+        try{
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                frame.setVisible(true);
+            }
+        });
+        }
+        finally{
+            if (frame != null) {
+                frame.dispose();
             }
         }
     }
