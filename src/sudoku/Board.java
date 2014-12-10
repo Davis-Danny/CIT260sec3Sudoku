@@ -242,7 +242,7 @@ public class Board implements java.io.Serializable {
         readBoard(file, "grid");
     }
 
-    public Status playGrid() throws BoardException,ExitException {
+    public void playGrid() throws BoardException,ExitException {
         int x;
         int y;
         int value;
@@ -255,7 +255,6 @@ public class Board implements java.io.Serializable {
         checkRange(value,-1,9);
         addNumber(value, x, y);
         displayGrid();
-        return PLAYING;
 
     }
 

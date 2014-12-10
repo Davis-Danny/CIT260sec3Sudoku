@@ -6,21 +6,15 @@
 package citbyui.cit260.sudoku.frames;
 
 import citbyui.cit260.sudoku.enums.Status;
-import citbyui.cit260.sudoku.menus.*;
+import static citbyui.cit260.sudoku.enums.Status.*;
 import sudoku.Sudoku;
 
 /**
  *
  * @author The Sneezes
  */
-public class MainFrame extends javax.swing.JFrame {
-
-    Sudoku sudoku;
-
-    /**
-     * Creates new form MainFrame
-     * @param status
-     */
+public class MainFrame extends SuperFrame {
+    
     public MainFrame() {
         initComponents();
         
@@ -182,28 +176,22 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void NewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameButtonActionPerformed
-        NewGameMenu menu = new NewGameMenu();
-        menu.getInput();
-    }//GEN-LAST:event_NewGameButtonActionPerformed
-
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
-        this.dispose();
+        toMain(EXIT);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void BestTimesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BestTimesButtonActionPerformed
-        BestTimesMenu menu = new BestTimesMenu();
-        menu.getInput();
+        toMain(BEST_TIMES);
     }//GEN-LAST:event_BestTimesButtonActionPerformed
 
     private void HelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpButtonActionPerformed
-        HelpMenu menu = new HelpMenu();
-        menu.getInput();
+        toMain(HELP);
     }//GEN-LAST:event_HelpButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void NewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameButtonActionPerformed
+        toMain(NEW_GAME);
+    }//GEN-LAST:event_NewGameButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BestTimesButton;

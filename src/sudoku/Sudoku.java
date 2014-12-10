@@ -16,6 +16,7 @@ import citbyui.cit260.sudoku.menus.ExitMenuView;
 import citbyui.cit260.sudoku.menus.HelpMenu;
 import citbyui.cit260.sudoku.menus.MainMenu;
 import citbyui.cit260.sudoku.menus.NewGameMenu;
+import java.awt.Frame;
 
 /**
  *
@@ -24,23 +25,22 @@ import citbyui.cit260.sudoku.menus.NewGameMenu;
 public class Sudoku implements java.io.Serializable {
 
     private static MainFrame mainFrame;
-    private Status status;
+    private static String difficulty;
 
     public static void main(String[] args) throws MenuException {
 
-        Sudoku sudoku = null;
         try {
-            sudoku = new Sudoku(MAIN_MENU);
+//            sudoku = new Sudoku(MAIN_MENU);
+//
+//            java.awt.EventQueue.invokeLater(new Runnable() {
+//                public void run() {
+//                    Sudoku.mainFrame = new MainFrame();
+//
+//                    Sudoku.mainFrame.setVisible(true);
+//                }
+//            });
 
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    Sudoku.mainFrame = new MainFrame();
-
-                    Sudoku.mainFrame.setVisible(true);
-                }
-            });
-
-            //takeAction(Status.MAIN_MENU);
+            takeAction(Status.MAIN_MENU);
 
         } catch (Throwable ex) {
             System.out.println("Unexpected error:" + ex.getMessage());
@@ -55,10 +55,13 @@ public class Sudoku implements java.io.Serializable {
     public Sudoku(Status status) {
 
     }
+    
+    public static void takeAction() throws MenuException{
+        takeAction(MAIN_MENU);
+    }
 
-    public void takeAction(Status status) throws MenuException {
+    public static void takeAction(Status status) throws MenuException {
 
-        String difficulty;
         Board board = new Board();
 
         while (status != QUIT) {
@@ -66,15 +69,12 @@ public class Sudoku implements java.io.Serializable {
                 case MAIN_MENU:
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            Sudoku.mainFrame = new MainFrame();
+                            MainFrame mainFrame = new MainFrame();
 
-                            Sudoku.mainFrame.setVisible(true);
+                            mainFrame.setVisible(true);
                         }
                     });
-
-                    MainMenu mainMenu = new MainMenu();
-                    status = mainMenu.getInput();
-                    break;
+                    return;
 
                 case NEW_GAME:
                     NewGameMenu mylevels = new NewGameMenu();

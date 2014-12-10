@@ -6,14 +6,10 @@
 package sudoku;
 
 import citbyui.cit260.sudoku.enums.Status;
-import static citbyui.cit260.sudoku.enums.Status.EXIT;
-import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
-import static citbyui.cit260.sudoku.enums.Status.PLAYING;
-import static citbyui.cit260.sudoku.enums.Status.QUIT;
+import static citbyui.cit260.sudoku.enums.Status.*;
 import citbyui.cit260.sudoku.exceptions.BoardException;
 import citbyui.cit260.sudoku.exceptions.ExitException;
 import citbyui.cit260.sudoku.menus.BestTimesMenu;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,7 +22,6 @@ public class Play implements java.io.Serializable {
     String command;
 
     public Status runGame(Board board) throws ExitException{
-        Status status = PLAYING;
         boolean repeat = true;
         final Timer timer = new Timer();
         int time = 0;
@@ -36,18 +31,13 @@ public class Play implements java.io.Serializable {
         board.displayGrid();
         while (repeat) {
             try{
-                status = board.playGrid();
+                board.playGrid();
             }
             catch(BoardException e){
                 System.out.println(e.getMessage());
-                continue;
-            }
-            if (status == PLAYING) {
-                repeat = true;
-            } else {
                 timer.cancel();
                 timer.purge();
-                return status;
+                continue;
             }
             time = add.getTime();
             System.out.format("%02d:%02d%n", time / 60, time % 60);
@@ -58,6 +48,8 @@ public class Play implements java.io.Serializable {
         if (board.checkBoard()) {
             System.out.println("Congratulations!");
             BestTimesMenu times = new BestTimesMenu();
+            timer.cancel();
+            timer.purge();
             return MAIN_MENU;
             //times.addTime(time);
         }
