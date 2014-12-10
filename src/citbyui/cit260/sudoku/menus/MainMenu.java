@@ -45,13 +45,5 @@ public class MainMenu extends Menu {
         }
     }
 
-    
    
-   
-    
-    public void displayQuit() throws MenuException {
-        ExitMenuView exit = new ExitMenuView();
-        exit.getIntake();
-    }
-
 }

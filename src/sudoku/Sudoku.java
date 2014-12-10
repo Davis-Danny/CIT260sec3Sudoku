@@ -10,6 +10,7 @@ import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.exceptions.ExitException;
 import citbyui.cit260.sudoku.exceptions.MenuException;
+import citbyui.cit260.sudoku.frames.MainFrame;
 import citbyui.cit260.sudoku.menus.BestTimesMenu;
 import citbyui.cit260.sudoku.menus.ExitMenuView;
 import citbyui.cit260.sudoku.menus.HelpMenu;
@@ -22,19 +23,40 @@ import citbyui.cit260.sudoku.menus.NewGameMenu;
  */
 public class Sudoku implements java.io.Serializable {
 
+    private static MainFrame mainFrame;
+    private Status status;
+
     public static void main(String[] args) throws MenuException {
 
-        
+        Sudoku sudoku = null;
         try {
-            takeAction(Status.MAIN_MENU);
-        }
-        catch(Throwable ex) {
-           System.out.println("Unexpected error:" + ex.getMessage());
-           System.out.println(ex.getStackTrace().toString());
+            sudoku = new Sudoku(MAIN_MENU);
+
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    Sudoku.mainFrame = new MainFrame();
+
+                    Sudoku.mainFrame.setVisible(true);
+                }
+            });
+
+            //takeAction(Status.MAIN_MENU);
+
+        } catch (Throwable ex) {
+            System.out.println("Unexpected error:" + ex.getMessage());
+            System.out.println(ex.getStackTrace().toString());
+        } finally {
+            if (Sudoku.mainFrame != null) {
+                Sudoku.mainFrame.dispose();
+            }
         }
     }
 
-    public static void takeAction(Status status) throws MenuException {
+    public Sudoku(Status status) {
+
+    }
+
+    public void takeAction(Status status) throws MenuException {
 
         String difficulty;
         Board board = new Board();
@@ -42,6 +64,14 @@ public class Sudoku implements java.io.Serializable {
         while (status != QUIT) {
             switch (status) {
                 case MAIN_MENU:
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            Sudoku.mainFrame = new MainFrame();
+
+                            Sudoku.mainFrame.setVisible(true);
+                        }
+                    });
+
                     MainMenu mainMenu = new MainMenu();
                     status = mainMenu.getInput();
                     break;
@@ -61,13 +91,12 @@ public class Sudoku implements java.io.Serializable {
 
                 case PLAYING:
                     Play myInterface = new Play();
-                    try{
+                    try {
                         status = myInterface.runGame(board);
-                    }
-                    catch(ExitException e){
+                    } catch (ExitException e) {
                         ExitMenuView exit = new ExitMenuView();
                         status = exit.getIntake();
-                        if(status == MAIN_MENU){
+                        if (status == MAIN_MENU) {
                             status = e.getOldStatus();
                         }
                     }
@@ -81,11 +110,9 @@ public class Sudoku implements java.io.Serializable {
                 case EXIT:
                     ExitMenuView exit = new ExitMenuView();
                     status = exit.getIntake();
-                    
-                 
+
             }
         }
     }
-    
 
 }
