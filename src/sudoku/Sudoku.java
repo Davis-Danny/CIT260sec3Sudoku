@@ -10,6 +10,7 @@ import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.exceptions.ExitException;
 import citbyui.cit260.sudoku.exceptions.MenuException;
+import citbyui.cit260.sudoku.frames.BestTimesFrame;
 import citbyui.cit260.sudoku.frames.HelpFrame;
 import citbyui.cit260.sudoku.frames.MainFrame;
 import citbyui.cit260.sudoku.frames.SuperFrame;
@@ -81,9 +82,8 @@ public class Sudoku implements java.io.Serializable {
                     break;
 
                 case BEST_TIMES:
-                    BestTimesMenu times = new BestTimesMenu();
-                    status = times.getInput();
-                    break;
+                    displayFrame(new BestTimesFrame());
+                    return;
 
                 case PLAYING:
                     Play myInterface = new Play();
