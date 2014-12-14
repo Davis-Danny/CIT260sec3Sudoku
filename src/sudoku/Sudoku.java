@@ -119,9 +119,9 @@ public class Sudoku implements java.io.Serializable {
         });
         }
         finally{
-            if (frame != null) {
-                frame.dispose();
-            }
+//            if (frame != null) {
+//                frame.dispose();
+//            }
         }
     }
 
