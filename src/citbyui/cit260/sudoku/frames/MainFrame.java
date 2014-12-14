@@ -11,7 +11,7 @@ import sudoku.Sudoku;
 
 /**
  *
- * @author The Sneezes
+ * @author Jeff
  */
 public class MainFrame extends SuperFrame {
     
