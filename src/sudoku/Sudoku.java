@@ -25,7 +25,7 @@ import java.awt.Frame;
 public class Sudoku implements java.io.Serializable {
 
     private static MainFrame mainFrame;
-    private static String difficulty;
+    private static String difficulty = null;
 
     public static void main(String[] args) throws MenuException {
 
@@ -59,6 +59,11 @@ public class Sudoku implements java.io.Serializable {
     public static void takeAction() throws MenuException {
         takeAction(MAIN_MENU);
     }
+    
+    public static void takeAction(Status status,String setDifficulty)throws MenuException{
+        difficulty = setDifficulty;
+        takeAction(status);
+    }
 
     public static void takeAction(Status status) throws MenuException {
 
@@ -71,10 +76,7 @@ public class Sudoku implements java.io.Serializable {
                     return;
 
                 case NEW_GAME:
-                    NewGameFrame newGame = new NewGameFrame();
-                    displayFrame(newGame);
-                    difficulty = newGame.getDifficulty();
-                    board.setBoard(difficulty);
+                    displayFrame(new NewGameFrame());
                     return;
 
                 case BEST_TIMES:
@@ -82,19 +84,9 @@ public class Sudoku implements java.io.Serializable {
                     return;
 
                 case PLAYING:
+                    board.setBoard(difficulty);
                     displayFrame(new PlayFrame(board));
                     return;
-//                    Play myInterface = new Play();
-//                    try {
-//                        status = myInterface.runGame(board);
-//                    } catch (ExitException e) {
-//                        ExitMenuView exit = new ExitMenuView();
-//                        status = exit.getIntake();
-//                        if (status == MAIN_MENU) {
-//                            status = e.getOldStatus();
-//                        }
-//                    }
-//                    break;
 
                 case HELP:
                     displayFrame(new HelpFrame());
@@ -113,9 +105,9 @@ public class Sudoku implements java.io.Serializable {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 frame.setVisible(true);
+                }
+            });
             }
-        });
-        }
         finally{
 //            if (frame != null) {
 //                frame.dispose();

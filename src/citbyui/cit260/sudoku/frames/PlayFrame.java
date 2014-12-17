@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.sudoku.frames;
 
+import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import sudoku.Board;
 
@@ -121,7 +122,7 @@ public class PlayFrame extends SuperFrame {
 
         jCoordY.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
 
-        jValue.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
+        jValue.setModel(new javax.swing.SpinnerNumberModel(1, 0, 9, 1));
 
         jEnter.setText("Enter");
         jEnter.addActionListener(new java.awt.event.ActionListener() {

@@ -9,6 +9,8 @@ import citbyui.cit260.sudoku.enums.Status;
 import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.PLAYING;
+import citbyui.cit260.sudoku.exceptions.MenuException;
+import sudoku.Sudoku;
 
 /**
  *
@@ -165,9 +167,7 @@ public class NewGameFrame extends SuperFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        difficulty = "hard";
-       toMain(PLAYING);
+       toMain(PLAYING,"H");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -176,16 +176,24 @@ public class NewGameFrame extends SuperFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-      difficulty = "easy";
-      toMain(PLAYING);
+      toMain(PLAYING,"M");
     }//GEN-LAST:event_jButton1ActionPerformed
     public String getDifficulty() {
      return difficulty;
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    
+    public void toMain(Status status,String difficulty){
+        this.dispose();
+        try{
+            Sudoku.takeAction(status,difficulty);
+            
+        }
+        catch(MenuException ex){
+            System.out.println("Unexpected error:" + ex.getMessage());
+            System.out.println(ex.getStackTrace().toString());
+        }
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
