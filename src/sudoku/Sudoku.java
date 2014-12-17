@@ -71,12 +71,11 @@ public class Sudoku implements java.io.Serializable {
                     return;
 
                 case NEW_GAME:
-                    NewGameMenu mylevels = new NewGameMenu();
-                    status = mylevels.getInput();
-                    difficulty = mylevels.getDifficulty();
-                    board = new Board();
+                    NewGameFrame newGame = new NewGameFrame();
+                    displayFrame(newGame);
+                    difficulty = newGame.getDifficulty();
                     board.setBoard(difficulty);
-                    break;
+                    return;
 
                 case BEST_TIMES:
                     displayFrame(new BestTimesFrame());
