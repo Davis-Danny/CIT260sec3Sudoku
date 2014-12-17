@@ -45,6 +45,10 @@ public class Board implements java.io.Serializable {
     public void edit() {
         setBoard("A");
     }
+    
+    public int[][] getGrid(){
+        return grid;
+    }
 
     private void fill() {
         switch (difficulty) {
@@ -76,7 +80,9 @@ public class Board implements java.io.Serializable {
     public boolean checkBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                return checkCell(i, j);
+                if(!checkCell(i, j)){
+                    return false;
+                }
             }
         }
         return true;

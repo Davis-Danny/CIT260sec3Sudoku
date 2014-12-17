@@ -10,10 +10,7 @@ import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import static citbyui.cit260.sudoku.enums.Status.QUIT;
 import citbyui.cit260.sudoku.exceptions.ExitException;
 import citbyui.cit260.sudoku.exceptions.MenuException;
-import citbyui.cit260.sudoku.frames.BestTimesFrame;
-import citbyui.cit260.sudoku.frames.HelpFrame;
-import citbyui.cit260.sudoku.frames.MainFrame;
-import citbyui.cit260.sudoku.frames.SuperFrame;
+import citbyui.cit260.sudoku.frames.*;
 import citbyui.cit260.sudoku.menus.BestTimesMenu;
 import citbyui.cit260.sudoku.menus.ExitMenuView;
 import citbyui.cit260.sudoku.menus.HelpMenu;
@@ -86,25 +83,27 @@ public class Sudoku implements java.io.Serializable {
                     return;
 
                 case PLAYING:
-                    Play myInterface = new Play();
-                    try {
-                        status = myInterface.runGame(board);
-                    } catch (ExitException e) {
-                        ExitMenuView exit = new ExitMenuView();
-                        status = exit.getIntake();
-                        if (status == MAIN_MENU) {
-                            status = e.getOldStatus();
-                        }
-                    }
-                    break;
+                    displayFrame(new PlayFrame(board));
+                    return;
+//                    Play myInterface = new Play();
+//                    try {
+//                        status = myInterface.runGame(board);
+//                    } catch (ExitException e) {
+//                        ExitMenuView exit = new ExitMenuView();
+//                        status = exit.getIntake();
+//                        if (status == MAIN_MENU) {
+//                            status = e.getOldStatus();
+//                        }
+//                    }
+//                    break;
 
                 case HELP:
                     displayFrame(new HelpFrame());
                     return;
 
                 case EXIT:
-                    ExitMenuView exit = new ExitMenuView();
-                    status = exit.getIntake();
+                    displayFrame(new ExitFrame());
+                    return;
 
             }
         }
