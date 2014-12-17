@@ -40,7 +40,8 @@ public class HelpFrame extends SuperFrame {
         Hints = new javax.swing.JButton();
         Quit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -128,24 +129,19 @@ public class HelpFrame extends SuperFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jLabel1.setText(Instuctions.getText());
-        jLabel1.setToolTipText("");
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
 
         javax.swing.GroupLayout jpBodyLayout = new javax.swing.GroupLayout(jpBody);
@@ -196,16 +192,22 @@ public class HelpFrame extends SuperFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InstuctionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstuctionsActionPerformed
-        // TODO add your handling code here:
-         HelpMenu MenuHelp = new HelpMenu();
-         MenuHelp.displayInstructions();
+        jTextArea1.setText("Pick a square to enter a number from 1 – 9 that you believe goes in that spot."
+             +"Continue until the squares are full and there are not any duplicate numbers in the rows, columns, or"
+             +"3x3 sub-grids. Once you have completed the grid, push the done button.");
+            jTextArea1.setLineWrap(true);
+            jTextArea1.setWrapStyleWord(true);
         
     }//GEN-LAST:event_InstuctionsActionPerformed
 
     private void HintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HintsActionPerformed
-        // TODO add your handling code here:
-         HelpMenu MenuHelp = new HelpMenu();
-         MenuHelp.displayHints();
+        jTextArea1.setText("Seek definites. When solving an easy Sudoku, the first thing you should do is look for definites."
+            + "Definites are numbers that are definitely going to be there. Starting at 1, draw imaginary lines through boxes"
+                + " in that 1's row and/or column. When there is only one box left in the 3x3 box, you know that is a definite."
+                );
+        jTextArea1.setLineWrap(true);
+        
+            jTextArea1.setWrapStyleWord(true);
         
     }//GEN-LAST:event_HintsActionPerformed
 
@@ -224,10 +226,11 @@ public class HelpFrame extends SuperFrame {
     private javax.swing.JButton Instuctions;
     private javax.swing.JButton Quit;
     private javax.swing.JLabel j1Title;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel jpBody;
     private javax.swing.JPanel jpTitle;
     // End of variables declaration//GEN-END:variables
