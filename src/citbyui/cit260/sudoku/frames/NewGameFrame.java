@@ -176,7 +176,7 @@ public class NewGameFrame extends SuperFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      toMain(PLAYING,"M");
+      toMain(PLAYING,"E");
     }//GEN-LAST:event_jButton1ActionPerformed
     public String getDifficulty() {
      return difficulty;

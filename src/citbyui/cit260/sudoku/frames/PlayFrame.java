@@ -7,7 +7,11 @@ package citbyui.cit260.sudoku.frames;
 
 import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
+import java.util.Timer;
+import java.util.TimerTask;
+import sudoku.BestTimes;
 import sudoku.Board;
+import sudoku.Play;
 
 /**
  *
@@ -16,6 +20,8 @@ import sudoku.Board;
 public class PlayFrame extends SuperFrame {
 
     Board board;
+    final Timer timer;
+    final SecondTask add;
 
     /**
      * Creates new form PlayFrame
@@ -23,10 +29,13 @@ public class PlayFrame extends SuperFrame {
     public PlayFrame(Board board) {
         this();
         this.board = board;
+        timer.scheduleAtFixedRate(add, 0, 1000);
         update();
     }
 
     public PlayFrame() {
+        add = new SecondTask(0);
+        this.timer = new Timer();
         initComponents();
     }
 
@@ -42,6 +51,8 @@ public class PlayFrame extends SuperFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         gridTable = new javax.swing.JTable();
@@ -55,6 +66,7 @@ public class PlayFrame extends SuperFrame {
         jlabelX = new javax.swing.JLabel();
         jLabelY = new javax.swing.JLabel();
         jLabelValue = new javax.swing.JLabel();
+        jTime = new javax.swing.JLabel();
 
         jTextField1.setText("Sudoku");
         jTextField1.setToolTipText("");
@@ -71,6 +83,10 @@ public class PlayFrame extends SuperFrame {
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +203,9 @@ public class PlayFrame extends SuperFrame {
                 .addContainerGap())
         );
 
+        jTime.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jTime.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,11 +216,12 @@ public class PlayFrame extends SuperFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(122, 122, 122)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTime, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -210,7 +230,9 @@ public class PlayFrame extends SuperFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -224,44 +246,72 @@ public class PlayFrame extends SuperFrame {
 
     private void jMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMainActionPerformed
         toMain(MAIN_MENU);
+        timer.cancel();
+        timer.purge();
     }//GEN-LAST:event_jMainActionPerformed
 
     private void jEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnterActionPerformed
-        board.addNumber((Integer)jValue.getValue(), (Integer)jCoordX.getValue()-1, 
-                (Integer)jCoordY.getValue()-1);
+        board.addNumber((Integer) jValue.getValue(), (Integer) jCoordX.getValue() - 1,
+                (Integer) jCoordY.getValue() - 1);
         update();
     }//GEN-LAST:event_jEnterActionPerformed
-    
-    public void update() {
+
+    private void update() {
         int[][] intGrid = board.getGrid();
-        
+
         gridTable.setModel(new javax.swing.table.DefaultTableModel(
                 convert(intGrid),
                 new String[]{
-                     "1", "2", "3", "4", "5", "6", "7", "8","9"
+                    "1", "2", "3", "4", "5", "6", "7", "8", "9"
                 }
         ));
-        if(board.checkBoard()){
+        if (board.checkBoard()) {
             toMain(MAIN_MENU);
+            timer.cancel();
+            timer.purge();
+            BestTimes times = new BestTimes();
+            times.addTime(add.getTime());
         }
+
+        jTime.setText(BestTimes.formatTimes(add.getTime()));
     }
-    
-    public Integer[][] convert(int[][] intGrid){
+
+    public Integer[][] convert(int[][] intGrid) {
         Integer[][] grid = new Integer[9][9];
-        for(int i=0;i<9;i++){
-            for(int t=0;t<9;t++){
+        for (int i = 0; i < 9; i++) {
+            for (int t = 0; t < 9; t++) {
                 grid[i][t] = intGrid[t][i];
             }
         }
         return grid;
     }
-    
+
+    private final class SecondTask extends TimerTask {
+
+        private int time;
+
+        public SecondTask(int time) {
+            this.time = time;
+        }
+
+        @Override
+        public void run() {
+            time++;
+        }
+
+        public int getTime() {
+            return time;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable gridTable;
     private javax.swing.JSpinner jCoordX;
     private javax.swing.JSpinner jCoordY;
     private javax.swing.JButton jEnter;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelValue;
     private javax.swing.JLabel jLabelY;
     private javax.swing.JButton jMain;
@@ -271,6 +321,7 @@ public class PlayFrame extends SuperFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jTime;
     private javax.swing.JSpinner jValue;
     private javax.swing.JLabel jlabelX;
     // End of variables declaration//GEN-END:variables
