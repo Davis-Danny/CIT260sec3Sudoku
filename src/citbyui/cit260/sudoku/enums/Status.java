@@ -16,6 +16,7 @@ public enum Status {
     HELP("HELP"),
     BEST_TIMES("BEST_TIMES"),
     EXIT("EXIT"),
+    CONGRATS("CONGRATS"),
     QUIT("QUIT");
     
     String value;

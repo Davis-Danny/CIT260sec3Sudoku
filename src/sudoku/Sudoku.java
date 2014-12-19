@@ -30,16 +30,6 @@ public class Sudoku implements java.io.Serializable {
     public static void main(String[] args) throws MenuException {
 
         try {
-//            sudoku = new Sudoku(MAIN_MENU);
-//
-//            java.awt.EventQueue.invokeLater(new Runnable() {
-//                public void run() {
-//                    Sudoku.mainFrame = new MainFrame();
-//
-//                    Sudoku.mainFrame.setVisible(true);
-//                }
-//            });
-
             takeAction(Status.MAIN_MENU);
 
         } catch (Throwable ex) {
@@ -59,8 +49,8 @@ public class Sudoku implements java.io.Serializable {
     public static void takeAction() throws MenuException {
         takeAction(MAIN_MENU);
     }
-    
-    public static void takeAction(Status status,String setDifficulty)throws MenuException{
+
+    public static void takeAction(Status status, String setDifficulty) throws MenuException {
         difficulty = setDifficulty;
         takeAction(status);
     }
@@ -95,24 +85,25 @@ public class Sudoku implements java.io.Serializable {
                 case EXIT:
                     displayFrame(new ExitFrame());
                     return;
+                case CONGRATS:
+                    displayFrame(new CongratsFrame());
+                    return;
 
             }
         }
     }
 
     private static void displayFrame(final SuperFrame frame) {
-        try{
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                frame.setVisible(true);
+        try {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    frame.setVisible(true);
                 }
             });
-            }
-        finally{
-//            if (frame != null) {
-//                frame.dispose();
-//            }
-        }
+        } catch (Throwable ex) {
+            System.out.println("Unexpected error:" + ex.getMessage());
+            System.out.println(ex.getStackTrace().toString());
+        } 
     }
-
 }
+

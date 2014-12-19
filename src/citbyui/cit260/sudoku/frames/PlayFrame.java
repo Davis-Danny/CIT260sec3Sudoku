@@ -5,6 +5,8 @@
  */
 package citbyui.cit260.sudoku.frames;
 
+import citbyui.cit260.sudoku.enums.Status;
+import static citbyui.cit260.sudoku.enums.Status.CONGRATS;
 import static citbyui.cit260.sudoku.enums.Status.EXIT;
 import static citbyui.cit260.sudoku.enums.Status.MAIN_MENU;
 import java.util.Timer;
@@ -266,7 +268,7 @@ public class PlayFrame extends SuperFrame {
                 }
         ));
         if (board.checkBoard()) {
-            toMain(MAIN_MENU);
+            toMain(CONGRATS);
             timer.cancel();
             timer.purge();
             BestTimes times = new BestTimes();
